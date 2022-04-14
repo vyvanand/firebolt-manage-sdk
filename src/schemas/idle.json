@@ -1,0 +1,71 @@
+{
+    "$schema": "https://meta.comcast.com/firebolt/config/idle",
+    "$id": "https://meta.comcast.com/firebolt/config/idle",
+    "title": "IdlePolicy",
+    "definitions": {
+        "IdlePolicy": {
+            "title": "IdlePolicy",
+            "description": "A configuration describing when the user/device is considered to be idle.",
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "interactionIdleTimer",
+                "decoderIdleTimer",
+                "interactionIdleWarningTime",
+                "decoderIdleWarningTime",
+                "enabledInteractivitySources"
+            ],
+            "properties": {
+                "interactionIdleTimer": {
+                    "description": "The duration, starting from last user interaction, after which the user will be considered idle, if no action is taken first.",
+                    "type": "integer",
+                    "default": 14400000
+                },
+                "decoderIdleTimer": {
+                    "description": "The duration, starting from last known decoder activity, after which the decoder will be considered idle, if no activity is recorded first.",
+                    "type": "integer",
+                    "default": 900000
+                },
+                "interactionIdleWarningTime": {
+                    "description": "How much time, in ms, before the interaction idle timer takes effect, that a warning event be fired, e.g. to enable a UI to present a prompt to cancel.",
+                    "type": "integer",
+                    "default": 300000
+                },
+                "decoderIdleWarningTime": {
+                    "description": "How much time, in ms, before the decoder idle timer takes effect, that a warning event be fired, e.g. to enable a UI to present a prompt to cancel.",
+                    "type": "integer",
+                    "default": 300000
+                },
+                "enabledInteractivitySources": {
+                    "description": "A list of flags to include/exclude certain types of 'interaction' from resetting the interactivey timer.",
+                    "type": "object",
+                    "patternProperties": {
+                        ".*?": {
+                            "type": "boolean",
+                            "default": true
+                        }
+                    },
+                    "required": [],
+                    "propertyNames": {
+                        "type": "string",
+                        "enum": [
+                            "developerTools",
+                            "appDetectedInteractivity"
+                        ]
+                    }
+                }
+            },
+            "examples": [
+                {
+                    "interactionIdleTimer": 10800000,
+                    "decoderIdleTimer": 600000,
+                    "interactionIdleWarningTime": 1000,
+                    "decoderIdleWarningTime": 1000,
+                    "enabledInteractivitySources": {
+                        "developerTools": false
+                    }
+                }
+            ]
+        }
+    }
+}

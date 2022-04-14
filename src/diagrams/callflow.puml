@@ -1,0 +1,132 @@
+@startuml
+
+participant rdk as "RDK"
+box os
+    participant idle as "Idle"
+    participant power as "Power"
+    participant lifecycle as "Lifecycle"
+end box
+
+participant manage as "Manage SDK"
+participant core as "Core SDK"
+participant ui as "UI"
+actor user as "User"
+
+group OS Initialization
+    idle -> idle: load the idle policy
+    power -> power: load the power policy
+    power -> power: load power settings
+    power -> power: merge and initialize power business logic
+    power -> idle: listen for interaction idle notifications
+    power -> idle: listen for interaction idle-soon notifications
+    power -> idle: listen for decoder idle notifications
+    power -> idle: listen for decoder idle-soon notifications
+end
+
+group UI Initialization
+    ui -> manage: Power.listen('wake')
+    manage -> power: Power.listen('wake')
+    ui -> manage: Power.listen('sleep')
+    manage -> power: Power.listen('sleep')
+    ui -> manage: Power.listen('sleep-pending')
+    manage -> power: Power.listen('sleep-pending')
+    ui -> manage: Power.listen('hibernate')
+    manage -> power: Power.listen('hibernate')
+    ui -> core: Lifecycle.ready()
+    core -> lifecycle: Lifecycle.ready()
+    power -> manage: Initial Power State event
+    manage -> ui: Initial Power State event
+end
+
+group Turn on Store Mode
+    user -> ui: Turn on Store Mode
+    ui -> ui: business stuff we aren't focused on...
+    ui -> manage: Power.setSleepWhenIdle(false)
+    manage -> power: Power.setSleepWhenIdle(false)
+    power -> power: Save sleepWhenIdle value
+    
+end
+
+group User idle
+    user -> user: Zzzzz...
+    idle -> power: User Idle-soon event
+    power -> power: check if potential policy match
+    power -> manage: Sleep-pending event
+    manage -> ui: Sleep-pending event
+    ui -> ui: Display prompt to user
+    user -> user: Zzzzz...
+    idle -> power: User Idle Event
+    power -> power: check if policy match
+    power -> manage: sleep event
+    manage -> ui++: sleep event
+    ui -> ui: Speak "Power off", etc...
+    ui -> manage--: Power.finished()
+    manage -> power: Power.finished()
+    power -> rdk: setPowerState(LIGHT_SLEEP)
+    power -> power: start hibernate timer
+end
+
+group Hibernate
+    power -> power: Hibernate timer fires
+    
+    alt if Critical Tasks Active
+        power -> power: wait
+    else else
+        power -> rdk: setPowerState(DEEP_SLEEP, network=true|false)
+        rdk -> rdk: suspend OS
+    end
+end
+
+group App-driven interaction
+    cherry -> manage: Interaction.action('some-action')
+    manage -> idle: Interaction.action('some-action')
+    alt if 'some-action' is valid
+        idle -> idle: reset interactiveIdle timer
+        idle -> idle: wait 5 seconds to restart interactiveIdle timer
+    else else
+        idle -> idle: continue interactiveIdle timer as-is
+    end
+end
+
+group Device-driven system task
+    cherry -> manage: Power.startDeviceUpdate()
+    manage -> power: Power.startDeviceUpdate()
+    power -> power: defer all Hibernation until done
+    power -> power: Hibernate timer fires
+    power -> power: wait...
+    cherry -> manage: Power.endDeviceUpdate()
+    manage -> power: Power.endDeviceUpdate()
+    alt if hibernate still valid
+        power -> rdk: setPowerState(DEEP_SLEEP, network=true|false)
+    end
+end
+
+group Hibernate to Sleep/On, e.g. network or key press
+    rdk -> rdk: unsuspend OS
+    power -> rdk: get wake reason
+    
+    alt if wake reason matches policy
+        power -> rdk: setPowerState(LIGHT_SLEEP) // needed?
+        power -> manage: unsuspend-cleanup
+        power -> rdk: setPowerState(ON)
+        power -> manage: 'wake' event
+        manage -> ui: 'wake' event
+        ui -> ui: show power on overlay
+    else else
+        power -> rdk: setPowerState(LIGHT_SLEEP) // needed?
+        power -> manage: unsuspend-cleanup
+    end
+end
+
+group Sleep to On
+    user -> power: Press remote key
+    alt if matches policy
+        power -> rdk: setPowerState(ON)
+        power -> manage: 'wake' event
+        manage -> ui: 'wake' event
+        ui -> ui: show power on overlay
+    end
+end
+
+
+@enduml

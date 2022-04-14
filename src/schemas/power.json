@@ -1,0 +1,155 @@
+{
+    "$schema": "https://meta.comcast.com/firebolt/config/power",
+    "$id": "https://meta.comcast.com/firebolt/config/power",
+    "title": "PowerPolicy",
+    "definitions": {
+        "PowerState": {
+            "title": "PowerState",
+            "description": "List of possible power states.",
+            "type": "string",
+            "enum": [
+                "active",
+                "standby",
+                "suspended"
+            ]
+        },
+        "PowerPolicy": {
+            "title": "PowerPolicy",
+            "description": "A configuration describing when to move to which power states.",
+            "type": "object",
+            "required": [
+                "defaults",
+                "transitions"
+            ],
+            "additionalProperties": false,
+            "properties": {
+                "defaults": {
+                    "type": "object",
+                    "description": "Default values to use when a corresponding user setting does not exist.",
+                    "additionalProperties": false,
+                    "required": [
+                        "networkEnabledDuringSuspended",
+                        "suspendedTimer"
+                    ],
+                    "properties": {
+                        "networkEnabledDuringSuspended": {
+                            "description": "Whether the network should remain active while in the suspended state.",
+                            "type": "boolean",
+                            "default": false
+                        },
+                        "suspendedTimer": {
+                            "description": "The duration, starting from when the device goes to standby, after which the device will go into suspended if it is not awoken first.",
+                            "type": "integer",
+                            "default": 900000
+                        }
+                    }
+                },
+                "transitions": {
+                    "type": "object",
+                    "required": [
+                        "activeToStandby",
+                        "standbyToSuspended",
+                        "suspendedToStandby",
+                        "standbyToActive"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                        "activeToStandby": {
+                            "$ref": "#/definitions/TransitionPolicy"
+                        },
+                        "standbyToSuspended": {
+                            "$ref": "#/definitions/TransitionPolicy"
+                        },
+                        "suspendedToStandby": {
+                            "$ref": "#/definitions/TransitionPolicy"
+                        },
+                        "standbyToActive": {
+                            "$ref": "#/definitions/TransitionPolicy"
+                        }
+                    }
+                }
+            },
+            "examples": [
+                {
+                    "defaults": {
+                        "networkEnabledDuringSuspended": false,
+                        "suspendedTimer": 1000
+                    },
+                    "transitions": {
+                        "standbyToActive": {
+                            "conditions": [
+                                {
+                                    "remoteKey": "*"
+                                }
+                            ]
+                        },
+                        "activeToStandby": {
+                            "conditions": [
+                                {
+                                    "remoteKey": "power"
+                                },
+                                {
+                                    "deviceKey": "power"
+                                }
+                            ]
+                        },
+                        "standbyToSuspended": {
+                            "conditions": [
+                            ]
+                        },
+                        "suspendedToStandby": {
+                            "conditions": [
+                                {
+                                    "remoteKey": "power"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "TransitionPolicy": {
+            "title": "TransitionPolicy",
+            "description": "A set of conditions that will initiate a specific power state transtion if they are ALL true.",
+            "type": "object",
+            "required": ["conditions"],
+            "additionalProperties": false,
+            "properties": {
+                "conditions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/PolicyCondition"
+                    }
+                }
+            }
+        },
+        "PolicyCondition": {
+            "title": "PolicyCondition",
+            "type": "object",
+            "minProperties": 1,
+            "additionalProperties": false,
+            "properties": {
+                "remoteKey": {
+                    "description": "Requires a specific, or any, remote key to be pressed to activate this policy",
+                    "type": "string",
+                    "enum": [
+                        "power",
+                        "*"
+                    ]
+                },
+                "deviceKey": {
+                    "description": "Requires a specific, or any, hardware key to be pressed to activate this policy",
+                    "type": "string",
+                    "enum": [
+                        "power",
+                        "*"
+                    ]
+                },
+                "externalDevicesIdle": {
+                    "type": "boolean",
+                    "description": "Requires that no external devices are performing any critical, uninteruptible tasks, e.g. software updates"
+                }
+            }            
+        }
+    }
+}

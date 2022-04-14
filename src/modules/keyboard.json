@@ -1,0 +1,225 @@
+{
+  "openrpc": "1.2.4",
+  "info": {
+    "title": "Keyboard",
+    "description": "A module for registering an app that provides keyboard UI to Firebolt",
+    "version": "0.0.0"
+  },
+  "methods": [
+    {
+      "name": "onRequestSession",
+      "summary": "Registers as a provider for when the user should be shown a keyboard",
+      "params": [
+        {
+          "name": "listen",
+          "summary": "Whether or not to listen for requests to this interface method.",
+          "schema": {
+            "type": "boolean"
+          }
+        }
+      ],
+      "tags": [
+        {
+          "name": "event",
+          "x-provides": [
+            "xrn:firebolt:capability:keyboard:standard"
+          ],
+          "x-response": {
+            "$ref": "#/components/schemas/KeyboardResultProviderResponse"
+          }
+        }
+      ],
+      "result": {
+        "name": "sessionRequest",
+        "summary": "The request to start a keyboard session",
+        "schema": {
+          "oneOf": [
+            {
+              "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ListenResponse"
+            },
+            {
+              "$ref": "#/components/schemas/KeyboardSessionProviderRequest"
+            }
+          ]
+        }
+      },
+      "examples": [
+        {
+          "name": "Default Example",
+          "params": [
+            {
+              "name": "listen",
+              "value": true
+            }
+          ],
+          "result": {
+            "name": "Default Result",
+            "value": {
+              "correlationId": "abc",
+              "request": {
+                "type": "standard",
+                "message": "Enter your user name."
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "sessionReady",
+      "summary": "Internal call made when a provider is invoked and the keyboard is ready to be shown",
+      "params": [],
+      "tags": [
+        {
+          "name": "rpc-only"
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "const": null
+        }
+      },
+      "examples": [
+        {
+          "name": "Default Example",
+          "params": [],
+          "result": {
+            "name": "Default Result",
+            "value": null
+          }
+        }
+      ]
+    },
+    {
+      "name": "sessionResponse",
+      "summary": "Internal call made when a provider is invoked and the keyboard session is completed",
+      "params": [
+        {
+          "name": "response",
+          "summary": "The response from the challenge provider",
+          "schema": {
+            "$ref": "#/components/schemas/KeyboardResultProviderResponse"
+          }
+        }
+      ],
+      "tags": [
+        {
+          "name": "rpc-only"
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "const": null
+        }
+      },
+      "examples": [
+        {
+          "name": "Default Example",
+          "params": [
+            {
+              "name": "response",
+              "value": {
+                "correlationId": "abc",
+                "response": {
+                  "text": "Entered this text",
+                  "canceled": false
+                }
+              }
+            }
+          ],
+          "result": {
+            "name": "Default Result",
+            "value": null
+          }
+        }
+      ]
+    }
+  ],
+  "components": {
+    "schemas": {
+      "KeyboardType": {
+        "title": "KeyboardType",
+        "type": "string",
+        "description": "The type of keyboard to show to the user",
+        "enum": [
+          "standard",
+          "email",
+          "password"
+        ]
+      },
+      "KeyboardSession": {
+        "title": "KeyboardSession",
+        "type": "object",
+        "required": [
+          "type",
+          "message"
+        ],
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/KeyboardType",
+            "description": "The type of keyboard"
+          },
+          "message": {
+            "description": "The message to display to the user so the user knows what they are entering",
+            "type": "string"
+          }
+        }
+      },
+      "KeyboardSessionProviderRequest": {
+        "title": "KeyboardSessionProviderRequest",
+        "type": "object",
+        "required": [
+          "correlationId",
+          "request"
+        ],
+        "properties": {
+          "correlationId": {
+            "type": "string",
+            "description": "An id to correlate the provider response with this request"
+          },
+          "request": {
+            "description": "The request to start a keyboard session",
+            "$ref": "#/components/schemas/KeyboardSession"
+          }
+        }
+      },
+      "KeyboardResult": {
+        "title": "KeyboardResult",
+        "type": "object",
+        "required": [
+          "text"
+        ],
+        "properties": {
+          "text": {
+            "type": "string",
+            "description": "The text the user entered into the keyboard"
+          },
+          "canceled": {
+            "type": "boolean",
+            "description": "Whether the user canceled entering text before they were finished typing on the keyboard"
+          }
+        }
+      },
+      "KeyboardResultProviderResponse": {
+        "title": "KeyboardResultProviderResponse",
+        "type": "object",
+        "required": [
+          "correlationId",
+          "response"
+        ],
+        "properties": {
+          "correlationId": {
+            "type": "string",
+            "description": "The id that was passed in to the event that triggered a provider method to be called"
+          },
+          "response": {
+            "description": "The result of the provider response, containing what the user typed in the keyboard",
+            "$ref": "#/components/schemas/KeyboardResult"
+          }
+        }
+      }
+    }
+  }
+}

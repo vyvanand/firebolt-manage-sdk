@@ -1,0 +1,231 @@
+{
+  "openrpc": "1.2.4",
+  "info": {
+    "title": "AcknowledgeChallenge",
+    "description": "A module for registering as a provider for a user grant in which the user confirms access to a capability",
+    "version": "0.0.0"
+  },
+  "methods": [
+    {
+      "name": "onRequestChallenge",
+      "summary": "Registers as a provider for when the user should be challenged in order to confirm access to a capability",
+      "params": [
+        {
+          "name": "listen",
+          "summary": "Whether or not to listen for requests to this interface method.",
+          "schema": {
+            "type": "boolean"
+          }
+        }
+      ],
+      "tags": [
+        {
+          "name": "event",
+          "x-provides": ["xrn:firebolt:capability:usergrant:acknowledgechallenge"],
+          "x-response": {
+            "$ref": "#/components/schemas/GrantResultProviderResponse"
+          }
+        }
+      ],
+      "result": {
+        "name": "challenge",
+        "summary": "The request to challenge the user",
+        "schema": {
+          "oneOf": [
+            {
+              "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ListenResponse"
+            },
+            {
+              "$ref": "#/components/schemas/ChallengeProviderRequest"
+            }
+          ]
+        }
+      },
+      "examples": [
+        {
+          "name": "Default Example",
+          "params": [
+            {
+              "name": "listen",
+              "value": true
+            }
+          ],
+          "result": {
+            "name": "Default Result",
+            "value": {
+              "correlationId": "abc",
+              "request": {
+                "capability": "xrn:firebolt:capability:localization::postalcode",
+                "requestor": {
+                  "id": "ReferenceApp",
+                  "name": "Firebolt Reference App"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "challengeReady",
+      "summary": "Internal call made when a provider is invoked and the challenge is ready to be shown",
+      "params": [
+      ],
+      "tags": [
+        {
+          "name": "rpc-only"
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "const": null
+        }
+      },
+      "examples": [
+        {
+          "name": "Default Example",
+          "params": [
+          ],
+          "result": {
+            "name": "Default Result",
+            "value": null
+          }
+        }
+      ]
+    },
+    {
+      "name": "challengeResponse",
+      "summary": "Internal call made when a provider is invoked and the challenge is completed",
+      "params": [
+        {
+          "name": "response",
+          "summary": "The response from the challenge provider",
+          "schema": {
+            "$ref": "#/components/schemas/GrantResultProviderResponse"
+          }
+        }
+      ],
+      "tags": [
+        {
+          "name": "rpc-only"
+        }
+      ],
+      "result": {
+        "name": "result",
+        "schema": {
+          "const": null
+        }
+      },
+      "examples": [
+        {
+          "name": "Default Example",
+          "params": [
+            {
+              "name": "response",
+              "value": {
+                "correlationId": "abc",
+                "response": {
+                  "granted": true
+                }
+              }
+            }
+          ],
+          "result": {
+            "name": "Default Result",
+            "value": null
+          }
+        }
+      ]
+    }
+  ],
+  "components": {
+    "schemas": {
+      "ChallengeRequestor": {
+        "title": "ChallengeRequestor",
+        "type": "object",
+        "required": [
+          "id",
+          "name"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The id of the app that requested the challenge"
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the app that requested the challenge"
+          }
+        }
+      },
+      "Challenge": {
+        "title": "Challenge",
+        "type": "object",
+        "required": [
+          "capability",
+          "requestor"
+        ],
+        "properties": {
+          "capability": {
+            "type": "string",
+            "description": "The capability that is being requested by the user to approve"
+          },
+          "requestor": {
+            "description": "The identity of which app is requesting access to this capability",
+            "$ref": "#/components/schemas/ChallengeRequestor"
+          }
+        }
+      },
+      "ChallengeProviderRequest": {
+        "title": "ChallengeProviderRequest",
+        "type": "object",
+        "required": [
+          "correlationId",
+          "request"
+        ],
+        "properties": {
+          "correlationId": {
+            "type": "string",
+            "description": "An id to correlate the provider response with this request"
+          },
+          "request": {
+            "description": "The request to challenge the user",
+            "$ref": "#/components/schemas/Challenge"
+          }
+        }
+      },
+      "GrantResult": {
+        "title": "GrantResult",
+        "type": "object",
+        "required": [
+          "granted"
+        ],
+        "properties": {
+          "granted": {
+            "type": "boolean",
+            "description": "Whether the user approved or denied the challenge"
+          }
+        }
+      },
+      "GrantResultProviderResponse": {
+        "title": "GrantResultProviderResponse",
+        "type": "object",
+        "required": [
+          "correlationId",
+          "response"
+        ],
+        "properties": {
+          "correlationId": {
+            "type": "string",
+            "description": "The id that was passed in to the event that triggered a provider method to be called"
+          },
+          "response": {
+            "description": "The result of the provider response, containing whether the user approved or denied the challenge",
+            "$ref": "#/components/schemas/GrantResult"
+          }
+        }
+      }
+    }
+  }
+}
