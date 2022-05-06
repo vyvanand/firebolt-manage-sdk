@@ -166,7 +166,25 @@
                         }                        
                     ]
                 }
-            }
+            },
+            "examples": [
+                {
+                    "name": "Default Example",
+                    "params": [
+                        {
+                            "name": "listen",
+                            "value": true
+                        }
+                    ],
+                    "result": {
+                        "name": "Default Result",
+                        "value": {
+                            "event": "Power.onActiveStandby",
+                            "listening": true
+                        }
+                    }
+                }
+            ]
         },
         {
             "name": "onResumedFromSuspended",
@@ -198,7 +216,25 @@
                         }
                     ]
                 }
-            }
+            },
+            "examples": [
+                {
+                    "name": "Default Example",
+                    "params": [
+                        {
+                            "name": "listen",
+                            "value": true
+                        }
+                    ],
+                    "result": {
+                        "name": "Default Result",
+                        "value": {
+                            "event": "Power.onResumeFromSuspend",
+                            "listening": true
+                        }
+                    }
+                }
+            ]
         },
         {
             "name": "onSuspendPending",
@@ -230,7 +266,25 @@
                         }
                     ]
                 }
-            }
+            },
+            "examples": [
+                {
+                    "name": "Default Example",
+                    "params": [
+                        {
+                            "name": "listen",
+                            "value": true
+                        }
+                    ],
+                    "result": {
+                        "name": "Default Result",
+                        "value": {
+                            "event": "Power.onSuspendPending",
+                            "listening": true
+                        }
+                    }
+                }
+            ]
         },
         {
             "name": "onInactivity",
@@ -263,6 +317,25 @@
                     ]
                 }
             }
+            ,
+            "examples": [
+                {
+                    "name": "Default Example",
+                    "params": [
+                        {
+                            "name": "listen",
+                            "value": true
+                        }
+                    ],
+                    "result": {
+                        "name": "Default Result",
+                        "value": {
+                            "event": "Power.onInactivity",
+                            "listening": true
+                        }
+                    }
+                }
+            ]
         },
         {
             "name": "onInactivityCancelled",
@@ -294,7 +367,25 @@
                         }
                     ]
                 }
-            }
+            },
+            "examples": [
+                {
+                    "name": "Default Example",
+                    "params": [
+                        {
+                            "name": "listen",
+                            "value": true
+                        }
+                    ],
+                    "result": {
+                        "name": "Default Result",
+                        "value": {
+                            "event": "Power.onInactivityCancelled",
+                            "listening": true
+                        }
+                    }
+                }
+            ]
         },
         {
             "name": "autoStandby",

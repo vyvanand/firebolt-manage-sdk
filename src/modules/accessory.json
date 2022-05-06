@@ -6,7 +6,7 @@
     "version": "0.0.0"
   },
   "components": {
-    "schema": {
+    "schemas": {
       "AccessoryList": {
         "title": "AccessoryList",
         "type": "object",
@@ -15,7 +15,7 @@
           "list": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schema/AccessoryInfo"
+              "$ref": "#/components/schemas/AccessoryInfo"
             }
           }
         }
@@ -35,7 +35,7 @@
         "enum": ["Remote", "Speaker", "Other"]
       },
       "AccessoryTypeListParam": {
-        "title": "AccessoryType",
+        "title": "AccessoryTypeListParam",
         "description": "Type of the device Remote,Speaker or Other",
         "type": "string",
         "enum": ["Remote", "Speaker", "All"]
@@ -47,7 +47,7 @@
         "enum": ["BluetoothLE", "RF4CE"]
       },
       "AccessoryProtocolListParam": {
-        "title": "AccessoryProtocol",
+        "title": "AccessoryProtocolListParam",
         "description": "Mechanism to connect the accessory to the device",
         "type": "string",
         "enum": ["BluetoothLE", "RF4CE", "All"]
@@ -58,7 +58,7 @@
         "type": "object",
         "properties": {
           "type": {
-            "$ref": "#/components/schema/AccessoryType"
+            "$ref": "#/components/schemas/AccessoryType"
           },
           "make": {
             "type": "string",
@@ -69,7 +69,7 @@
             "description": "Model name of the accessory"
           },
           "protocol": {
-            "$ref": "#/components/schema/AccessoryProtocol"
+            "$ref": "#/components/schemas/AccessoryProtocol"
           }
         }
       }
@@ -83,19 +83,19 @@
         {
           "name": "type",
           "schema": {
-            "$ref": "#/components/schema/AccessoryType"
+            "$ref": "#/components/schemas/AccessoryType"
           }
         },
         {
           "name": "protocol",
           "schema": {
-            "$ref": "#/components/schema/AccessoryProtocol"
+            "$ref": "#/components/schemas/AccessoryProtocol"
           }
         },
         {
           "name": "timeout",
           "schema": {
-            "$ref": "#/components/schema/AccessoryPairingTimeout"
+            "$ref": "#/components/schemas/AccessoryPairingTimeout"
           }
         }
       ],
@@ -103,7 +103,7 @@
         "name": "pairedAccessory",
         "summary": "The state of last paired accessory",
         "schema": {
-          "$ref": "#/components/schema/AccessoryInfo"
+          "$ref": "#/components/schemas/AccessoryInfo"
         }
       },
       "examples": [
@@ -194,14 +194,14 @@
         {
           "name": "type",
           "schema": {
-            "$ref": "#/components/schema/AccessoryTypeListParam"
+            "$ref": "#/components/schemas/AccessoryTypeListParam"
           }
         },
         {
           "name": "protocol",
           "summary": "Defines the mechanism by which accessory will connect to the device.",
           "schema": {
-            "$ref": "#/components/schema/AccessoryProtocolListParam"
+            "$ref": "#/components/schemas/AccessoryProtocolListParam"
           }
         }
       ],
@@ -209,7 +209,7 @@
         "name": "list",
         "summary": "Contains a list of Accesories paired to the device.",
         "schema": {
-          "$ref": "#/components/schema/AccessoryList"
+          "$ref": "#/components/schemas/AccessoryList"
         }
       },
       "examples": [
