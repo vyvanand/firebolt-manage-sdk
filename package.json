@@ -2,7 +2,7 @@
   "name": "@firebolt-js/manage-sdk",
   "version": "0.1.0-alpha.4",
   "description": "The Firebolt JS Manage SDK",
-  "main": "./dist/lib/firebolt.mjs",
+  "main": "./dist/lib/firebolt-manage.mjs",
   "types": "./dist/lib/firebolt-manage.d.ts",
   "scripts": {
     "prepare": "npm run prepare:setup && npm run dist:docs && npm run dist:sdk && npm run dist:d",
