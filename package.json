@@ -21,7 +21,8 @@
     "clean": "rimraf build && npx mkdirp build && rimraf dist && npx mkdirp dist",
     "build": "npm run validate && npm run build:docs && npm run build:sdk",
     "publish:docs": "npm run build:docs && sh ./push-docs.sh",
-    "publish:word": "npx mkdirp ./dist/word/schemas && cd ./dist/docs && find . -iname \"*.md\" -type f -exec sh -c 'pandoc \"${0}\" -o \"../word/${0%.md}.docx\"' {} \\;"
+    "publish:word": "npx mkdirp ./dist/word/schemas && cd ./dist/docs && find . -iname \"*.md\" -type f -exec sh -c 'pandoc \"${0}\" -o \"../word/${0%.md}.docx\"' {} \\;",
+    "postinstall": "npm update @firebolt-js/openrpc"
   },
   "repository": {
     "type": "git",
