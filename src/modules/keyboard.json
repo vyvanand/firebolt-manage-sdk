@@ -21,12 +21,14 @@
       "tags": [
         {
           "name": "event",
-          "x-provides": [
-            "xrn:firebolt:capability:keyboard:standard"
-          ],
           "x-response": {
             "$ref": "#/components/schemas/KeyboardResultProviderResponse"
           }
+        },
+        {
+          "name": "capabilities",
+          "x-provides": "xrn:firebolt:capability:keyboard:standard",
+          "x-allow-focus": true
         }
       ],
       "result": {
@@ -38,7 +40,7 @@
               "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ListenResponse"
             },
             {
-              "$ref": "#/components/schemas/KeyboardSessionProviderRequest"
+              "$ref": "#/components/schemas/KeyboardProviderRequest"
             }
           ]
         }
@@ -56,82 +58,11 @@
             "name": "Default Result",
             "value": {
               "correlationId": "abc",
-              "request": {
+              "parameters": {
                 "type": "standard",
                 "message": "Enter your user name."
               }
             }
-          }
-        }
-      ]
-    },
-    {
-      "name": "sessionReady",
-      "summary": "Internal call made when a provider is invoked and the keyboard is ready to be shown",
-      "params": [],
-      "tags": [
-        {
-          "name": "rpc-only"
-        }
-      ],
-      "result": {
-        "name": "result",
-        "schema": {
-          "const": null
-        }
-      },
-      "examples": [
-        {
-          "name": "Default Example",
-          "params": [],
-          "result": {
-            "name": "Default Result",
-            "value": null
-          }
-        }
-      ]
-    },
-    {
-      "name": "sessionResponse",
-      "summary": "Internal call made when a provider is invoked and the keyboard session is completed",
-      "params": [
-        {
-          "name": "response",
-          "summary": "The response from the challenge provider",
-          "schema": {
-            "$ref": "#/components/schemas/KeyboardResultProviderResponse"
-          }
-        }
-      ],
-      "tags": [
-        {
-          "name": "rpc-only"
-        }
-      ],
-      "result": {
-        "name": "result",
-        "schema": {
-          "const": null
-        }
-      },
-      "examples": [
-        {
-          "name": "Default Example",
-          "params": [
-            {
-              "name": "response",
-              "value": {
-                "correlationId": "abc",
-                "response": {
-                  "text": "Entered this text",
-                  "canceled": false
-                }
-              }
-            }
-          ],
-          "result": {
-            "name": "Default Result",
-            "value": null
           }
         }
       ]
@@ -149,8 +80,8 @@
           "password"
         ]
       },
-      "KeyboardSession": {
-        "title": "KeyboardSession",
+      "KeyboardParameters": {
+        "title": "KeyboardParameters",
         "type": "object",
         "required": [
           "type",
@@ -167,21 +98,21 @@
           }
         }
       },
-      "KeyboardSessionProviderRequest": {
-        "title": "KeyboardSessionProviderRequest",
+      "KeyboardProviderRequest": {
+        "title": "KeyboardProviderRequest",
         "type": "object",
         "required": [
           "correlationId",
-          "request"
+          "parameters"
         ],
         "properties": {
           "correlationId": {
             "type": "string",
             "description": "An id to correlate the provider response with this request"
           },
-          "request": {
+          "parameters": {
             "description": "The request to start a keyboard session",
-            "$ref": "#/components/schemas/KeyboardSession"
+            "$ref": "#/components/schemas/KeyboardParameters"
           }
         }
       },

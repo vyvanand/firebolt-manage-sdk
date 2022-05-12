@@ -21,10 +21,14 @@
       "tags": [
         {
           "name": "event",
-          "x-provides": ["xrn:firebolt:capability:usergrant:acknowledgechallenge"],
           "x-response": {
             "$ref": "#/components/schemas/GrantResultProviderResponse"
           }
+        },
+        {
+          "name": "capabilities",
+          "x-provides": "xrn:firebolt:capability:usergrant:acknowledgechallenge",
+          "x-allow-focus": true
         }
       ],
       "result": {
@@ -54,7 +58,7 @@
             "name": "Default Result",
             "value": {
               "correlationId": "abc",
-              "request": {
+              "parameters": {
                 "capability": "xrn:firebolt:capability:localization::postalcode",
                 "requestor": {
                   "id": "ReferenceApp",
@@ -62,78 +66,6 @@
                 }
               }
             }
-          }
-        }
-      ]
-    },
-    {
-      "name": "challengeReady",
-      "summary": "Internal call made when a provider is invoked and the challenge is ready to be shown",
-      "params": [
-      ],
-      "tags": [
-        {
-          "name": "rpc-only"
-        }
-      ],
-      "result": {
-        "name": "result",
-        "schema": {
-          "const": null
-        }
-      },
-      "examples": [
-        {
-          "name": "Default Example",
-          "params": [
-          ],
-          "result": {
-            "name": "Default Result",
-            "value": null
-          }
-        }
-      ]
-    },
-    {
-      "name": "challengeResponse",
-      "summary": "Internal call made when a provider is invoked and the challenge is completed",
-      "params": [
-        {
-          "name": "response",
-          "summary": "The response from the challenge provider",
-          "schema": {
-            "$ref": "#/components/schemas/GrantResultProviderResponse"
-          }
-        }
-      ],
-      "tags": [
-        {
-          "name": "rpc-only"
-        }
-      ],
-      "result": {
-        "name": "result",
-        "schema": {
-          "const": null
-        }
-      },
-      "examples": [
-        {
-          "name": "Default Example",
-          "params": [
-            {
-              "name": "response",
-              "value": {
-                "correlationId": "abc",
-                "response": {
-                  "granted": true
-                }
-              }
-            }
-          ],
-          "result": {
-            "name": "Default Result",
-            "value": null
           }
         }
       ]
@@ -179,21 +111,23 @@
       },
       "ChallengeProviderRequest": {
         "title": "ChallengeProviderRequest",
-        "type": "object",
-        "required": [
-          "correlationId",
-          "request"
-        ],
-        "properties": {
-          "correlationId": {
-            "type": "string",
-            "description": "An id to correlate the provider response with this request"
+        "allOf": [
+          {
+            "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ProviderRequest"
           },
-          "request": {
-            "description": "The request to challenge the user",
-            "$ref": "#/components/schemas/Challenge"
+          {
+            "type": "object",
+            "required": [
+              "parameters"
+            ],
+            "properties": {
+              "parameters": {
+                "description": "The request to challenge the user",
+                "$ref": "#/components/schemas/Challenge"
+              }
+            }
           }
-        }
+        ]
       },
       "GrantResult": {
         "title": "GrantResult",
@@ -210,21 +144,31 @@
       },
       "GrantResultProviderResponse": {
         "title": "GrantResultProviderResponse",
-        "type": "object",
-        "required": [
-          "correlationId",
-          "response"
-        ],
-        "properties": {
-          "correlationId": {
-            "type": "string",
-            "description": "The id that was passed in to the event that triggered a provider method to be called"
+        "allOf": [
+          {
+            "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ProviderResponse"
           },
-          "response": {
-            "description": "The result of the provider response, containing whether the user approved or denied the challenge",
-            "$ref": "#/components/schemas/GrantResult"
+          {
+            "type": "object",
+            "required": [
+              "result"
+            ],
+            "properties": {
+              "result": {
+                "description": "The result of the provider response, containing whether the user approved or denied the challenge",
+                "$ref": "#/components/schemas/GrantResult"
+              }
+            }  
           }
-        }
+        ],
+        "examples": [
+          {
+            "correlationId": "abc",
+            "result": {
+              "granted": true
+            }
+          }
+        ]
       }
     }
   }
