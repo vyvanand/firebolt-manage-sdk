@@ -96,7 +96,13 @@
             "description": "The message to display to the user so the user knows what they are entering",
             "type": "string"
           }
-        }
+        },
+        "examples": [
+          {
+            "type": "standard",
+            "message": "Enter your user name."
+          }
+        ]
       },
       "KeyboardProviderRequest": {
         "title": "KeyboardProviderRequest",
@@ -138,18 +144,26 @@
         "type": "object",
         "required": [
           "correlationId",
-          "response"
+          "result"
         ],
         "properties": {
           "correlationId": {
             "type": "string",
             "description": "The id that was passed in to the event that triggered a provider method to be called"
           },
-          "response": {
+          "result": {
             "description": "The result of the provider response, containing what the user typed in the keyboard",
             "$ref": "#/components/schemas/KeyboardResult"
           }
-        }
+        },
+        "examples": [
+          {
+            "correlationId": "123",
+            "result": {
+              "text": "some text"
+            }
+          }
+        ]
       }
     }
   }
