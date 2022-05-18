@@ -7,8 +7,8 @@
   },
   "methods": [
     {
-      "name": "onRequestSession",
-      "summary": "Registers as a provider for when the user should be shown a keyboard",
+      "name": "onRequestStandard",
+      "summary": "Registers as a provider for when the user should be shown a standard keyboard.",
       "params": [
         {
           "name": "listen",
@@ -22,12 +22,17 @@
         {
           "name": "event",
           "x-response": {
-            "$ref": "#/components/schemas/KeyboardResultProviderResponse"
+            "$ref": "#/components/schemas/KeyboardResult",
+            "examples": [
+              {
+                "text": "username"
+              }
+            ]
           }
         },
         {
           "name": "capabilities",
-          "x-provides": "xrn:firebolt:capability:keyboard:standard",
+          "x-provides": "xrn:firebolt:capability:input:keyboard",
           "x-allow-focus": true
         }
       ],
@@ -59,14 +64,143 @@
             "value": {
               "correlationId": "abc",
               "parameters": {
-                "type": "standard",
                 "message": "Enter your user name."
               }
             }
           }
         }
       ]
-    }
+    },
+    {
+      "name": "onRequestPassword",
+      "summary": "Registers as a provider for when the user should be shown a password keyboard, with dots for each character entered.",
+      "params": [
+        {
+          "name": "listen",
+          "summary": "Whether or not to listen for requests to this interface method.",
+          "schema": {
+            "type": "boolean"
+          }
+        }
+      ],
+      "tags": [
+        {
+          "name": "event",
+          "x-response": {
+            "$ref": "#/components/schemas/KeyboardResult",
+            "examples": [
+              {
+                "text": "password"
+              }
+            ]
+          }
+        },
+        {
+          "name": "capabilities",
+          "x-provides": "xrn:firebolt:capability:input:keyboard",
+          "x-allow-focus": true
+        }
+      ],
+      "result": {
+        "name": "sessionRequest",
+        "summary": "The request to start a keyboard session",
+        "schema": {
+          "oneOf": [
+            {
+              "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ListenResponse"
+            },
+            {
+              "$ref": "#/components/schemas/KeyboardProviderRequest"
+            }
+          ]
+        }
+      },
+      "examples": [
+        {
+          "name": "Default Example",
+          "params": [
+            {
+              "name": "listen",
+              "value": true
+            }
+          ],
+          "result": {
+            "name": "Default Result",
+            "value": {
+              "correlationId": "abc",
+              "parameters": {
+                "message": "Enter your user name."
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "onRequestEmail",
+      "summary": "Registers as a provider for when the user should be shown a keyboard optimized for email address entry.",
+      "params": [
+        {
+          "name": "listen",
+          "summary": "Whether or not to listen for requests to this interface method.",
+          "schema": {
+            "type": "boolean"
+          }
+        }
+      ],
+      "tags": [
+        {
+          "name": "event",
+          "x-response": {
+            "$ref": "#/components/schemas/KeyboardResult",
+            "examples": [
+              {
+                "text": "email@address.com"
+              }
+            ]
+          }
+        },
+        {
+          "name": "capabilities",
+          "x-provides": "xrn:firebolt:capability:input:keyboard",
+          "x-allow-focus": true
+        }
+      ],
+      "result": {
+        "name": "sessionRequest",
+        "summary": "The request to start a keyboard session",
+        "schema": {
+          "oneOf": [
+            {
+              "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ListenResponse"
+            },
+            {
+              "$ref": "#/components/schemas/KeyboardProviderRequest"
+            }
+          ]
+        }
+      },
+      "examples": [
+        {
+          "name": "Default Example",
+          "params": [
+            {
+              "name": "listen",
+              "value": true
+            }
+          ],
+          "result": {
+            "name": "Default Result",
+            "value": {
+              "correlationId": "abc",
+              "parameters": {
+                "message": "Enter your user name."
+              }
+            }
+          }
+        }
+      ]
+    }    
   ],
   "components": {
     "schemas": {
@@ -84,14 +218,9 @@
         "title": "KeyboardParameters",
         "type": "object",
         "required": [
-          "type",
           "message"
         ],
         "properties": {
-          "type": {
-            "$ref": "#/components/schemas/KeyboardType",
-            "description": "The type of keyboard"
-          },
           "message": {
             "description": "The message to display to the user so the user knows what they are entering",
             "type": "string"
@@ -138,32 +267,6 @@
             "description": "Whether the user canceled entering text before they were finished typing on the keyboard"
           }
         }
-      },
-      "KeyboardResultProviderResponse": {
-        "title": "KeyboardResultProviderResponse",
-        "type": "object",
-        "required": [
-          "correlationId",
-          "result"
-        ],
-        "properties": {
-          "correlationId": {
-            "type": "string",
-            "description": "The id that was passed in to the event that triggered a provider method to be called"
-          },
-          "result": {
-            "description": "The result of the provider response, containing what the user typed in the keyboard",
-            "$ref": "#/components/schemas/KeyboardResult"
-          }
-        },
-        "examples": [
-          {
-            "correlationId": "123",
-            "result": {
-              "text": "some text"
-            }
-          }
-        ]
       }
     }
   }

@@ -81,7 +81,10 @@
             "name": "shareWatchHistory",
             "tags": [
                 {
-                    "name": "property",
+                    "name": "property"
+                },
+                {
+                    "name": "capabilities",
                     "x-manages": [
                         "xrn:firebolt:capability:privacy:content"
                     ]
@@ -119,7 +122,10 @@
             "name": "enableRecommendations",
             "tags": [
                 {
-                    "name": "property",
+                    "name": "property"
+                },
+                {
+                    "name": "capabilities",
                     "x-manages": [
                         "xrn:firebolt:capability:privacy:content"
                     ]
@@ -157,7 +163,10 @@
             "name": "rememberWatchedPrograms",
             "tags": [
                 {
-                    "name": "property",
+                    "name": "property"
+                },
+                {
+                    "name": "capabilities",
                     "x-manages": [
                         "xrn:firebolt:capability:privacy:content"
                     ]

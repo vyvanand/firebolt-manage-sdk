@@ -58,7 +58,10 @@
             "name": "enabled",
             "tags": [
                 {
-                    "name": "property",
+                    "name": "property"
+                },
+                {
+                    "name": "capabilities",
                     "x-manages": [
                         "xrn:firebolt:capability:settings:voiceguidance"
                     ]
@@ -89,7 +92,10 @@
             "name": "speed",
             "tags": [
                 {
-                    "name": "property",
+                    "name": "property"
+                },
+                {
+                    "name": "capabilities",
                     "x-manages": [
                         "xrn:firebolt:capability:settings:voiceguidance"
                     ]

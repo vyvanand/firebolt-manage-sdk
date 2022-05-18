@@ -71,7 +71,10 @@
             "name": "name",
             "tags": [
                 {
-                    "name": "property",
+                    "name": "property"
+                },
+                {
+                    "name": "capabilities",
                     "x-manages": [
                         "xrn:firebolt:capability:settings:device"
                     ]

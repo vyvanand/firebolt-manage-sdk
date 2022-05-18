@@ -63,7 +63,10 @@
             "name": "enabled",
             "tags": [
                 {
-                    "name": "property",
+                    "name": "property"
+                },
+                {
+                    "name": "capabilities",
                     "x-manages": [
                         "xrn:firebolt:capability:settings:closedcaptions"
                     ]
@@ -92,7 +95,10 @@
             "name": "fontFamily",
             "tags": [
                 {
-                    "name": "property",
+                    "name": "property"
+                },
+                {
+                    "name": "capabilities",
                     "x-manages": [
                         "xrn:firebolt:capability:settings:closedcaptions"
                     ]
@@ -121,7 +127,10 @@
             "name": "fontSize",
             "tags": [
                 {
-                    "name": "property",
+                    "name": "property"
+                },
+                {
+                    "name": "capabilities",
                     "x-manages": [
                         "xrn:firebolt:capability:settings:closedcaptions"
                     ]
@@ -150,7 +159,10 @@
             "name": "fontColor",
             "tags": [
                 {
-                    "name": "property",
+                    "name": "property"
+                },
+                {
+                    "name": "capabilities",
                     "x-manages": [
                         "xrn:firebolt:capability:settings:closedcaptions"
                     ]
@@ -179,7 +191,10 @@
             "name": "fontEdge",
             "tags": [
                 {
-                    "name": "property",
+                    "name": "property"
+                },
+                {
+                    "name": "capabilities",
                     "x-manages": [
                         "xrn:firebolt:capability:settings:closedcaptions"
                     ]
@@ -208,7 +223,10 @@
             "name": "fontEdgeColor",
             "tags": [
                 {
-                    "name": "property",
+                    "name": "property"
+                },
+                {
+                    "name": "capabilities",
                     "x-manages": [
                         "xrn:firebolt:capability:settings:closedcaptions"
                     ]
@@ -237,7 +255,10 @@
             "name": "fontOpacity",
             "tags": [
                 {
-                    "name": "property",
+                    "name": "property"
+                },
+                {
+                    "name": "capabilities",
                     "x-manages": [
                         "xrn:firebolt:capability:settings:closedcaptions"
                     ]
@@ -266,7 +287,10 @@
             "name": "backgroundColor",
             "tags": [
                 {
-                    "name": "property",
+                    "name": "property"
+                },
+                {
+                    "name": "capabilities",
                     "x-manages": [
                         "xrn:firebolt:capability:settings:closedcaptions"
                     ]
@@ -295,7 +319,10 @@
             "name": "backgroundOpacity",
             "tags": [
                 {
-                    "name": "property",
+                    "name": "property"
+                },
+                {
+                    "name": "capabilities",
                     "x-manages": [
                         "xrn:firebolt:capability:settings:closedcaptions"
                     ]
@@ -324,7 +351,10 @@
             "name": "textAlign",
             "tags": [
                 {
-                    "name": "property",
+                    "name": "property"
+                },
+                {
+                    "name": "capabilities",
                     "x-manages": [
                         "xrn:firebolt:capability:settings:closedcaptions"
                     ]
@@ -353,7 +383,10 @@
             "name": "textAlignVertical",
             "tags": [
                 {
-                    "name": "property",
+                    "name": "property"
+                },
+                {
+                    "name": "capabilities",
                     "x-manages": [
                         "xrn:firebolt:capability:settings:closedcaptions"
                     ]
