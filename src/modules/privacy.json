@@ -1,0 +1,199 @@
+{
+    "openrpc": "1.2.4",
+    "info": {
+        "title": "Privacy",
+        "description": "A module for managing device settings.",
+        "version": "0.0.0"
+    },
+    "methods": [
+        {
+            "name": "onRequestContentPolicy",
+            "tags": [
+                {
+                    "name": "capabilities",
+                    "x-provides": "xrn:firebolt:capability:privacy:content"
+                },
+                {
+                    "name": "event",
+                    "x-response": {
+                        "$ref": "https://meta.comcast.com/firebolt/privacy#/definitions/ContentPolicy",
+                        "examples": [
+                            {
+                                "enableRecommendations": true,
+                                "shareWatchHistory": false,
+                                "rememberWatchedPrograms": true
+                            }
+                        ]
+                    }
+                }
+            ],
+            "summary": "Request the content privacy settings for a specific app.",
+            "params": [
+                {
+                    "name": "appId",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "result": {
+                "name": "result",
+                "schema": {
+                    "oneOf": [
+                        {
+                          "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ListenResponse"
+                        },
+                        {
+                            "allOf": [
+                                {
+                                    "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ProviderRequest"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "parameters": {
+                                            "const": null
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "examples": [
+                {
+                    "name": "Default Example",
+                    "params": [
+                    ],
+                    "result": {
+                        "name": "result",
+                        "value": {
+                            "correlationId": "xyz",
+                            "parameters": null
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "shareWatchHistory",
+            "tags": [
+                {
+                    "name": "property",
+                    "x-manages": [
+                        "xrn:firebolt:capability:privacy:content"
+                    ]
+                }
+            ],
+            "summary": "Whether or not the user has enabled app watch history data to be shared with the platform.",
+            "params": [
+                {
+                    "name": "appId",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "result": {
+                "name": "share",
+                "schema": {
+                    "type": "boolean"
+                }
+            },
+            "examples": [
+                {
+                    "name": "Default Example",
+                    "params": [
+                    ],
+                    "result": {
+                        "name": "share",
+                        "value": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "enableRecommendations",
+            "tags": [
+                {
+                    "name": "property",
+                    "x-manages": [
+                        "xrn:firebolt:capability:privacy:content"
+                    ]
+                }
+            ],
+            "summary": "Whether or not to the user has enabled history-based recommendations.",
+            "params": [
+                {
+                    "name": "appId",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "result": {
+                "name": "share",
+                "schema": {
+                    "type": "boolean"
+                }
+            },
+            "examples": [
+                {
+                    "name": "Default Example",
+                    "params": [
+                    ],
+                    "result": {
+                        "name": "share",
+                        "value": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "rememberWatchedPrograms",
+            "tags": [
+                {
+                    "name": "property",
+                    "x-manages": [
+                        "xrn:firebolt:capability:privacy:content"
+                    ]
+                }
+            ],
+            "summary": "Whether or not to the user has enabled persistence of watch history content.",
+            "params": [
+                {
+                    "name": "appId",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "result": {
+                "name": "remember",
+                "schema": {
+                    "type": "boolean"
+                }
+            },
+            "examples": [
+                {
+                    "name": "Default Example",
+                    "params": [
+                    ],
+                    "result": {
+                        "name": "remember",
+                        "value": true
+                    }
+                }
+            ]
+        }        
+   ],
+    "components": {
+        "schemas": {
+        }
+    }
+}

@@ -22,7 +22,7 @@
         {
           "name": "event",
           "x-response": {
-            "$ref": "#/components/schemas/GrantResultProviderResponse"
+            "$ref": "#/components/schemas/GrantResult"
           }
         },
         {
@@ -140,33 +140,10 @@
             "type": "boolean",
             "description": "Whether the user approved or denied the challenge"
           }
-        }
-      },
-      "GrantResultProviderResponse": {
-        "title": "GrantResultProviderResponse",
-        "allOf": [
-          {
-            "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ProviderResponse"
-          },
-          {
-            "type": "object",
-            "required": [
-              "result"
-            ],
-            "properties": {
-              "result": {
-                "description": "The result of the provider response, containing whether the user approved or denied the challenge",
-                "$ref": "#/components/schemas/GrantResult"
-              }
-            }  
-          }
-        ],
+        },
         "examples": [
           {
-            "correlationId": "abc",
-            "result": {
-              "granted": true
-            }
+            "granted": true
           }
         ]
       }

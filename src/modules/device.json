@@ -1,0 +1,106 @@
+{
+    "openrpc": "1.2.4",
+    "info": {
+        "title": "Device",
+        "description": "A module for managing device settings.",
+        "version": "0.0.0"
+    },
+    "methods": [
+        {
+            "name": "onRequestName",
+            "tags": [
+                {
+                    "name": "event",
+                    "x-response": {
+                        "type": "string",
+                        "examples": [
+                            "Living Room"
+                        ]
+                    }
+                },
+                {
+                    "name": "capabilities",
+                    "x-provides": "xrn:firebolt:capability:settings:device"
+                }
+            ],
+            "summary": "Request the user-asigned name of this device from the device settings provider.",
+            "params": [
+            ],
+            "result": {
+                "name": "name",
+                "schema": {
+                    "oneOf": [
+                        {
+                          "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ListenResponse"
+                        },
+                        {
+                            "allOf": [
+                                {
+                                    "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ProviderRequest"
+                                },
+                                {
+                                    "type": "object",
+                                    "required": [ "parameters"],
+                                    "properties": {
+                                        "parameters": {
+                                            "const": null
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "examples": [
+                {
+                    "name": "Default Example",
+                    "params": [
+                    ],
+                    "result": {
+                        "name": "result",
+                        "value": {
+                            "correlationId": "123",
+                            "parameters": null
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "name",
+            "tags": [
+                {
+                    "name": "property",
+                    "x-manages": [
+                        "xrn:firebolt:capability:settings:device"
+                    ]
+                }
+            ],
+            "summary": "The user-asigned name of this device.",
+            "params": [
+            ],
+            "result": {
+                "name": "name",
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "examples": [
+                {
+                    "name": "Default Example",
+                    "params": [
+                    ],
+                    "result": {
+                        "name": "name",
+                        "value": "Living Room"
+                    }
+                }
+            ]
+        }
+   ],
+    "components": {
+        "schemas": {
+        }
+    }
+}

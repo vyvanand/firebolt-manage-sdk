@@ -1,0 +1,124 @@
+{
+    "openrpc": "1.2.4",
+    "info": {
+        "title": "VoiceGuidance",
+        "description": "A module for managing voice-guidance Settings.",
+        "version": "0.0.0"
+    },
+    "methods": [
+        {
+            "name": "onRequestSettings",
+            "tags": [
+                {
+                    "name": "capabilities",
+                    "x-provides": "xrn:firebolt:capability:settings:voiceguidance"
+                },
+                {
+                    "name": "event",
+                    "x-response": {
+                        "$ref": "https://meta.comcast.com/firebolt/accessibility#/definitions/VoiceGuidanceSettings"
+                    }
+                }
+            ],
+            "summary": "Dispatches a request for the current voice-guidance settings to the voice-guidance settings provider.",
+            "params": [],
+            "result": {
+                "name": "result",
+                "schema": {
+                    "oneOf": [
+                        {
+                            "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ListenResponse"
+                        },
+                        {
+                            "type": "object",
+                            "properties": {
+                                "parameters": {
+                                    "const": null
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "examples": [
+                {
+                    "name": "Getting the voice-guidance settings",
+                    "params": [],
+                    "result": {
+                        "name": "settings",
+                        "value": {
+                            "correlationId": "xyz",
+                            "parameters": null
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "enabled",
+            "tags": [
+                {
+                    "name": "property",
+                    "x-manages": [
+                        "xrn:firebolt:capability:settings:voiceguidance"
+                    ]
+                }
+            ],
+            "summary": "Whether or not voice-guidance is enabled.",
+            "params": [
+            ],
+            "result": {
+                "name": "enabled",
+                "schema": {
+                    "type": "boolean"
+                }
+            },
+            "examples": [
+                {
+                    "name": "Default Example",
+                    "params": [
+                    ],
+                    "result": {
+                        "name": "enabled",
+                        "value": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "speed",
+            "tags": [
+                {
+                    "name": "property",
+                    "x-manages": [
+                        "xrn:firebolt:capability:settings:voiceguidance"
+                    ]
+                }
+            ],
+            "summary": "The speed at which voice guidance speech will be read back to the user.",
+            "params": [
+            ],
+            "result": {
+                "name": "speed",
+                "schema": {
+                    "$ref": "https://meta.comcast.com/firebolt/accessibility#/definitions/VoiceSpeed"
+                }
+            },
+            "examples": [
+                {
+                    "name": "Default Example",
+                    "params": [
+                    ],
+                    "result": {
+                        "name": "speed",
+                        "value": 1
+                    }
+                }
+            ]
+        }
+   ],
+    "components": {
+        "schemas": {
+        }
+    }
+}
