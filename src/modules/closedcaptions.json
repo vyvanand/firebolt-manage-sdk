@@ -424,7 +424,6 @@
                         "type": "object",
                         "properties": {
                             "parameters": {
-                                "title": "SettingsParameters",
                                 "const": null
                             }
                         }

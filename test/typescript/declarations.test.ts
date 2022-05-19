@@ -8,7 +8,8 @@ class VGProvider implements VoiceGuidance.SettingsProvider {
 }
 
 class CCProvider implements ClosedCaptions.SettingsProvider {
-    settings(parameters: object, session: object):Promise<ClosedCaptions.ClosedCaptionsSettings> {
+    settings(parameters: object, session: ClosedCaptions.ProviderSession): Promise<ClosedCaptions.ClosedCaptionsSettings> {
+        session.correlationId
         return Promise.resolve(null)
     }
 }
