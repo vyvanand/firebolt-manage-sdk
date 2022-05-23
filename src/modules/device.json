@@ -100,6 +100,40 @@
                     }
                 }
             ]
+        },
+        {
+            "name": "developerMode",
+            "tags": [
+                {
+                    "name": "property"
+                },
+                {
+                    "name": "capabilities",
+                    "x-manages": [
+                        "xrn:firebolt:capability:developer:tools"
+                    ]
+                }
+            ],
+            "summary": "Whether or not developer mode is enabled.",
+            "params": [
+            ],
+            "result": {
+                "name": "developerMode",
+                "schema": {
+                    "type": "boolean"
+                }
+            },
+            "examples": [
+                {
+                    "name": "Default Example",
+                    "params": [
+                    ],
+                    "result": {
+                        "name": "developerMode",
+                        "value": true
+                    }
+                }
+            ]
         }
    ],
     "components": {
