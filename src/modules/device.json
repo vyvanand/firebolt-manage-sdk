@@ -13,9 +13,7 @@
                     "name": "event",
                     "x-response": {
                         "type": "string",
-                        "examples": [
-                            "Living Room"
-                        ]
+                        "examples": ["Living Room"]
                     }
                 },
                 {
@@ -24,14 +22,13 @@
                 }
             ],
             "summary": "Request the user-assigned name of this device from the device settings provider.",
-            "params": [
-            ],
+            "params": [],
             "result": {
                 "name": "name",
                 "schema": {
                     "oneOf": [
                         {
-                          "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ListenResponse"
+                            "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ListenResponse"
                         },
                         {
                             "allOf": [
@@ -40,7 +37,7 @@
                                 },
                                 {
                                     "type": "object",
-                                    "required": [ "parameters"],
+                                    "required": ["parameters"],
                                     "properties": {
                                         "parameters": {
                                             "const": null
@@ -55,8 +52,7 @@
             "examples": [
                 {
                     "name": "Default Example",
-                    "params": [
-                    ],
+                    "params": [],
                     "result": {
                         "name": "result",
                         "value": {
@@ -75,14 +71,11 @@
                 },
                 {
                     "name": "capabilities",
-                    "x-manages": [
-                        "xrn:firebolt:capability:settings:device"
-                    ]
+                    "x-manages": ["xrn:firebolt:capability:settings:device"]
                 }
             ],
             "summary": "The user-assigned name of this device.",
-            "params": [
-            ],
+            "params": [],
             "result": {
                 "name": "name",
                 "schema": {
@@ -92,11 +85,57 @@
             "examples": [
                 {
                     "name": "Default Example",
-                    "params": [
-                    ],
+                    "params": [],
                     "result": {
                         "name": "name",
                         "value": "Living Room"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "provision",
+            "summary": "Used by a distributor to push provision info to firebolt.",
+            "params": [
+                {
+                    "name": "accountId",
+                    "summary": "The id of the account that is device is attached to in the back office.",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "deviceId",
+                    "summary": "The id of the device in the back office.",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "result": {
+                "name": "result",
+                "schema": {
+                    "const": null
+                }
+            },
+            "examples": [
+                {
+                    "name": "Default Example",
+                    "params": [
+                        {
+                            "name": "accountId",
+                            "value": "12345678910"
+                        },
+                        {
+                            "name": "deviceId",
+                            "value": "987654321111"
+                        }
+                    ],
+                    "result": {
+                        "name": "defaultResult",
+                        "value": null
                     }
                 }
             ]
@@ -108,9 +147,7 @@
                     "name": "event",
                     "x-response": {
                         "type": "string",
-                        "examples": [
-                            "19103"
-                        ]
+                        "examples": ["19103"]
                     }
                 },
                 {
@@ -119,14 +156,13 @@
                 }
             ],
             "summary": "Request the user-asigned postal code of this device from the device settings provider.",
-            "params": [
-            ],
+            "params": [],
             "result": {
                 "name": "code",
                 "schema": {
                     "oneOf": [
                         {
-                          "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ListenResponse"
+                            "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ListenResponse"
                         },
                         {
                             "allOf": [
@@ -135,7 +171,7 @@
                                 },
                                 {
                                     "type": "object",
-                                    "required": [ "parameters"],
+                                    "required": ["parameters"],
                                     "properties": {
                                         "parameters": {
                                             "const": null
@@ -150,8 +186,7 @@
             "examples": [
                 {
                     "name": "Default Example",
-                    "params": [
-                    ],
+                    "params": [],
                     "result": {
                         "name": "result",
                         "value": {
@@ -170,14 +205,11 @@
                 },
                 {
                     "name": "capabilities",
-                    "x-manages": [
-                        "xrn:firebolt:capability:settings:device"
-                    ]
+                    "x-manages": ["xrn:firebolt:capability:settings:device"]
                 }
             ],
             "summary": "The user-asigned postal code of this device.",
-            "params": [
-            ],
+            "params": [],
             "result": {
                 "name": "code",
                 "schema": {
@@ -187,8 +219,7 @@
             "examples": [
                 {
                     "name": "Default Example",
-                    "params": [
-                    ],
+                    "params": [],
                     "result": {
                         "name": "code",
                         "value": "19103"
@@ -204,14 +235,11 @@
                 },
                 {
                     "name": "capabilities",
-                    "x-manages": [
-                        "xrn:firebolt:capability:developer:tools"
-                    ]
+                    "x-manages": ["xrn:firebolt:capability:developer:tools"]
                 }
             ],
             "summary": "Whether or not developer mode is enabled.",
-            "params": [
-            ],
+            "params": [],
             "result": {
                 "name": "developerMode",
                 "schema": {
@@ -221,8 +249,7 @@
             "examples": [
                 {
                     "name": "Default Example",
-                    "params": [
-                    ],
+                    "params": [],
                     "result": {
                         "name": "developerMode",
                         "value": true
@@ -232,7 +259,6 @@
         }
     ],
     "components": {
-        "schemas": {
-        }
+        "schemas": {}
     }
 }
