@@ -17,7 +17,7 @@
     "dist:d": "firebolt-openrpc --task declarations --source ./src/ --output ./dist/lib/firebolt-manage.d.ts --shared-schemas node_modules/@firebolt-js/schemas/src/schemas/",
     "dist:docs": "npm run validate && npm run build:docs asPath && rm -r ./dist/docs && cp -R ./build/docs/markdown ./dist/docs",
     "dist:wiki": "npm run validate && npm run build:wiki && rm -r ./dist/docs && cp -R ./build/docs/markdown ./dist/docs",
-    "test:setup": "rimraf test/transpiled-suite && npx tsc test/typescript/*.ts --target es6 --moduleResolution node --outDir test/transpiled-suite/",
+    "test:setup": "rimraf test/transpiled-suite && npx tsc --target es6 --moduleResolution node --outDir test/transpiled-suite/",
     "test": "npm run test:setup && node --experimental-vm-modules node_modules/jest/bin/jest.js --config=jest.config.json --detectOpenHandles",
     "clean": "rimraf build && npx mkdirp build && rimraf dist && npx mkdirp dist",
     "build": "npm run validate && npm run build:docs && npm run build:sdk",
