@@ -66,6 +66,10 @@
                 {
                     "name": "Default Example",
                     "params": [
+                        {
+                            "name": "appId",
+                            "value": "some-app"
+                        }
                     ],
                     "result": {
                         "name": "result",
@@ -110,6 +114,10 @@
                 {
                     "name": "Default Example",
                     "params": [
+                        {
+                            "name": "appId",
+                            "value": "some-app"
+                        }
                     ],
                     "result": {
                         "name": "share",
@@ -151,6 +159,10 @@
                 {
                     "name": "Default Example",
                     "params": [
+                        {
+                            "name": "appId",
+                            "value": "some-app"
+                        }
                     ],
                     "result": {
                         "name": "share",
@@ -192,6 +204,10 @@
                 {
                     "name": "Default Example",
                     "params": [
+                        {
+                            "name": "appId",
+                            "value": "some-app"
+                        }
                     ],
                     "result": {
                         "name": "remember",
