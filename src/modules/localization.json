@@ -1,0 +1,199 @@
+{
+    "openrpc": "1.2.4",
+    "info": {
+        "title": "Localization",
+        "description": "A module for managing Localization.",
+        "version": "0.0.0"
+    },
+    "methods": [
+        {
+            "name": "localilty",
+            "tags": [
+                {
+                    "name": "property"
+                },
+                {
+                    "name": "capabilities",
+                    "x-manages": [
+                        "xrn:firebolt:capability:settings:localization"
+                    ]
+                }
+            ],
+            "summary": "Set the locality/city the device is located in",
+            "params": [
+                {
+                    "name": "locality",
+                    "schema": {
+                      "$ref": "https://meta.comcast.com/firebolt/localization#/definitions/Locality"
+                    }
+                }
+            ],
+            "result": {
+                "name": "result",
+                "schema": {
+                    "const": null
+                }
+            },
+            "examples": [
+                {
+                    "name": "Default Example",
+                    "params": [
+                        {
+                            "name": "locality",
+                            "value": "Philadelphia"
+                        }
+                    ],
+                    "result": {
+                        "name": "Default Result",
+                        "value": null
+                    }
+                }
+            ]
+        },
+        {
+            "name": "countryCode",
+            "tags": [
+                {
+                    "name": "property"
+                },
+                {
+                    "name": "capabilities",
+                    "x-manages": [
+                        "xrn:firebolt:capability:settings:localization"
+                    ]
+                }
+            ],
+            "summary": "Set the ISO 3166 code for the counrty device is located in",
+            "params": [
+                {
+                    "name": "countryCode",
+                    "schema": {
+                      "$ref": "https://meta.comcast.com/firebolt/localization#/definitions/CountryCode"
+                    }
+                }
+            ],
+            "result": {
+                "name": "result",
+                "schema": {
+                    "const": null
+                }
+            },
+            "examples": [
+                {
+                    "name": "Default Example",
+                    "params": [
+                        {
+                            "name": "countryCode",
+                            "value": "US"
+                        }
+                    ],
+                    "result": {
+                        "name": "Default Result",
+                        "value": null
+                    }
+                }
+            ]
+        },
+        {
+            "name": "language",
+            "tags": [
+                {
+                    "name": "property"
+                },
+                {
+                    "name": "capabilities",
+                    "x-manages": [
+                        "xrn:firebolt:capability:settings:localization"
+                    ]
+                }
+            ],
+            "summary": "Set the ISO 639 1/2 code for the preferred language",
+            "params": [
+                {
+                    "name": "language",
+                    "schema": {
+                      "$ref": "https://meta.comcast.com/firebolt/localization#/definitions/Language"
+                    }
+                }
+            ],
+            "result": {
+                "name": "result",
+                "schema": {
+                    "const": null
+                }
+            },
+            "examples": [
+                {
+                    "name": "Default Example",
+                    "params": [
+                        {
+                            "name": "language",
+                            "value": "en"
+                        }
+                    ],
+                    "result": {
+                        "name": "Default Result",
+                        "value": null
+                    }
+                }
+            ]
+        },
+        {
+            "name": "locale",
+            "tags": [
+                {
+                    "name": "property"
+                },
+                {
+                    "name": "capabilities",
+                    "x-manages": [
+                        "xrn:firebolt:capability:settings:localization"
+                    ]
+                }
+            ],
+            "summary": "Set the full BCP 47 code, including script, region, variant, etc., for the preferred langauage/locale",
+            "params": [
+                {
+                    "name": "locale",
+                    "schema": {
+                      "$ref": "https://meta.comcast.com/firebolt/localization#/definitions/Locale"
+                    }
+                }
+            ],
+            "result": {
+                "name": "result",
+                "schema": {
+                    "const": null
+                }
+            },
+            "examples": [
+                {
+                    "name": "Default Example",
+                    "params": [
+                        {
+                            "name": "locale",
+                            "value": "en-US"
+                        }
+                    ],
+                    "result": {
+                        "name": "Default Result",
+                        "value": null
+                    }
+                },
+                {
+                    "name": "Variant Example",
+                    "params": [
+                        {
+                            "name": "locale",
+                            "value": "en-US-klingon"
+                        }
+                    ],
+                    "result": {
+                        "name": "Default Result",
+                        "value": null
+                    }
+                }
+            ]
+        }
+    ]
+}
