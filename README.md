@@ -1,7 +1,7 @@
 ---
 title: Firebolt Manage SDK
 ---
-# Firebolt Discovery SDK
+# Firebolt Manage SDK
 For building Firebolt compliant settings and management experiences.
 
 ## Usage
