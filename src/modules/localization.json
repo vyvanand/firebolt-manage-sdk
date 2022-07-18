@@ -20,32 +20,21 @@
                 }
             ],
             "summary": "Set the locality/city the device is located in",
-            "params": [
-                {
-                    "name": "locality",
-                    "schema": {
-                      "$ref": "https://meta.comcast.com/firebolt/localization#/definitions/Locality"
-                    }
-                }
-            ],
+            "params": [],
             "result": {
                 "name": "result",
                 "schema": {
-                    "const": null
+                    "$ref": "https://meta.comcast.com/firebolt/localization#/definitions/Locality"
                 }
             },
             "examples": [
                 {
                     "name": "Default Example",
-                    "params": [
-                        {
-                            "name": "locality",
-                            "value": "Philadelphia"
-                        }
-                    ],
+                    "params": [],
                     "result": {
                         "name": "Default Result",
-                        "value": null
+                        "value": "Philadelphia"
+                        
                     }
                 }
             ]
@@ -64,32 +53,20 @@
                 }
             ],
             "summary": "Set the ISO 3166 code for the counrty device is located in",
-            "params": [
-                {
-                    "name": "countryCode",
-                    "schema": {
-                      "$ref": "https://meta.comcast.com/firebolt/localization#/definitions/CountryCode"
-                    }
-                }
-            ],
+            "params": [],
             "result": {
                 "name": "result",
                 "schema": {
-                    "const": null
+                    "$ref": "https://meta.comcast.com/firebolt/localization#/definitions/CountryCode"
                 }
             },
             "examples": [
                 {
                     "name": "Default Example",
-                    "params": [
-                        {
-                            "name": "countryCode",
-                            "value": "US"
-                        }
-                    ],
+                    "params": [],
                     "result": {
                         "name": "Default Result",
-                        "value": null
+                        "value": "US"
                     }
                 }
             ]
@@ -108,32 +85,20 @@
                 }
             ],
             "summary": "Set the ISO 639 1/2 code for the preferred language",
-            "params": [
-                {
-                    "name": "language",
-                    "schema": {
-                      "$ref": "https://meta.comcast.com/firebolt/localization#/definitions/Language"
-                    }
-                }
-            ],
+            "params": [],
             "result": {
                 "name": "result",
                 "schema": {
-                    "const": null
+                    "$ref": "https://meta.comcast.com/firebolt/localization#/definitions/Language"
                 }
             },
             "examples": [
                 {
                     "name": "Default Example",
-                    "params": [
-                        {
-                            "name": "language",
-                            "value": "en"
-                        }
-                    ],
+                    "params": [],
                     "result": {
                         "name": "Default Result",
-                        "value": null
+                        "value": "en"
                     }
                 }
             ]
@@ -152,32 +117,20 @@
                 }
             ],
             "summary": "Set the full BCP 47 code, including script, region, variant, etc., for the preferred langauage/locale",
-            "params": [
-                {
-                    "name": "locale",
-                    "schema": {
-                      "$ref": "https://meta.comcast.com/firebolt/localization#/definitions/Locale"
-                    }
-                }
-            ],
+            "params": [],
             "result": {
                 "name": "result",
                 "schema": {
-                    "const": null
+                    "$ref": "https://meta.comcast.com/firebolt/localization#/definitions/Locale"
                 }
             },
             "examples": [
                 {
                     "name": "Default Example",
-                    "params": [
-                        {
-                            "name": "locale",
-                            "value": "en-US"
-                        }
-                    ],
+                    "params": [],
                     "result": {
                         "name": "Default Result",
-                        "value": null
+                        "value": "en-US"
                     }
                 },
                 {
