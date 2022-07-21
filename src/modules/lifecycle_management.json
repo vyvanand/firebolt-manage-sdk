@@ -1,0 +1,302 @@
+{
+    "openrpc": "1.2.4",
+    "info": {
+        "title": "LifecycleManagement",
+        "description": "A module for managing application lifecycle.",
+        "version": "0.0.0"
+    },
+    "methods": [
+        {
+            "name": "setState",
+            "summary": "Used by provider to update the state of an application so that the state can be emitted to apps.",
+            "params": [
+                {
+                    "name": "appId",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "state",
+                    "required": true,
+                    "schema": {
+                        "$ref": "https://meta.comcast.com/firebolt/lifecycle#/definitions/LifecycleState"
+                    }
+                }
+            ],
+            "result": {
+                "name": "result",
+                "schema": {
+                    "const": null
+                }
+            },
+            "examples": [
+                {
+                    "name": "Set application lifecycle state to inactive",
+                    "params": [
+                        {
+                            "name": "state",
+                            "value": "inactive"
+                        },
+                        {
+                            "name": "appId",
+                            "value": "SomeAppId"
+                        }
+                    ],
+                    "result": {
+                        "name": "defaultResult",
+                        "value": null
+                    }
+                }
+            ]
+        },
+        {
+            "name": "onRequestReady",
+            "summary": "Tells the provider that an app has said they are ready",
+            "params": [
+                {
+                    "name": "listen",
+                    "summary": "Whether or not to listen for requests to this interface method.",
+                    "schema": {
+                        "type": "boolean"
+                    }
+                }
+            ],
+            "tags": [
+                {
+                  "name": "capabilities",
+                  "x-provides": "xrn:firebolt:capability:app:lifecycle",
+                  "x-allow-focus": false
+                }
+              ],
+            "result": {
+                "name": "ready",
+                "summary": "The app has said they are ready",
+                "schema": {
+                    "oneOf": [
+                        {
+                          "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ListenResponse"
+                        },
+                        {
+                          "$ref": "#/components/schemas/LifecycleReadyRequest"
+                        }
+                    ]            
+                }
+            },
+            "examples": [
+                {
+                    "name": "Default Example",
+                    "params": [
+                        {
+                            "name": "listen",
+                            "value": true
+                        }
+                    ],
+                    "result": {
+                        "name": "Default Result",
+                        "value": {
+                          "parameters": {
+                            "appId": "SomeAppId"
+                          }
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "onRequestClose",
+            "summary": "Tells the provider that an app has requested closing itself",
+            "params": [
+                {
+                    "name": "listen",
+                    "summary": "Whether or not to listen for requests to this interface method.",
+                    "schema": {
+                        "type": "boolean"
+                    }
+                }
+            ],
+            "tags": [
+                {
+                  "name": "capabilities",
+                  "x-provides": "xrn:firebolt:capability:app:lifecycle",
+                  "x-allow-focus": false
+                }
+              ],
+            "result": {
+                "name": "close",
+                "summary": "The app has requested to be closed",
+                "schema": {
+                    "oneOf": [
+                        {
+                          "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ListenResponse"
+                        },
+                        {
+                          "$ref": "#/components/schemas/LifecycleCloseRequest"
+                        }
+                    ]            
+                }
+            },
+            "examples": [
+                {
+                    "name": "Default Example",
+                    "params": [
+                        {
+                            "name": "listen",
+                            "value": true
+                        }
+                    ],
+                    "result": {
+                        "name": "Default Result",
+                        "value": {
+                          "parameters": {
+                            "appId": "SomeAppId",
+                            "reason": "userExit"
+                          }
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "onRequestFinished",
+            "summary": "Tells the provider that an app has said they are finished cleaning up while unloading",
+            "params": [
+                {
+                    "name": "listen",
+                    "summary": "Whether or not to listen for requests to this interface method.",
+                    "schema": {
+                        "type": "boolean"
+                    }
+                }
+            ],
+            "tags": [
+                {
+                  "name": "capabilities",
+                  "x-provides": "xrn:firebolt:capability:app:lifecycle",
+                  "x-allow-focus": false
+                }
+              ],
+            "result": {
+                "name": "finished",
+                "summary": "The app has said they are finished",
+                "schema": {
+                    "oneOf": [
+                        {
+                          "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ListenResponse"
+                        },
+                        {
+                          "$ref": "#/components/schemas/LifecycleFinishedRequest"
+                        }
+                    ]            
+                }
+            },
+            "examples": [
+                {
+                    "name": "Default Example",
+                    "params": [
+                        {
+                            "name": "listen",
+                            "value": true
+                        }
+                    ],
+                    "result": {
+                        "name": "Default Result",
+                        "value": {
+                          "parameters": {
+                            "appId": "SomeAppId"
+                          }
+                        }
+                    }
+                }
+            ]
+        }
+    ],
+    "components": {
+        "schemas": {
+            "LifecycleReadyParameters": {
+                "title": "LifecycleReadyParameters",
+                "type": "object",
+                "required": [
+                  "appId"
+                ],
+                "properties": {
+                  "appId": {
+                    "description": "The application ID",
+                    "type": "string"
+                  }
+                }
+            },
+            "LifecycleCloseParameters": {
+                "title": "LifecycleCloseParameters",
+                "type": "object",
+                "required": [
+                  "appId",
+                  "reason"
+                ],
+                "properties": {
+                  "appId": {
+                    "description": "The application ID",
+                    "type": "string"
+                  },
+                  "reason": {
+                    "description": "The close reason",
+                    "$ref": "https://meta.comcast.com/firebolt/lifecycle#/definitions/CloseReason"
+                  }
+                }
+            },
+            "LifecycleFinishedParameters": {
+                "title": "LifecycleFinishedParameters",
+                "type": "object",
+                "required": [
+                  "appId"
+                ],
+                "properties": {
+                  "appId": {
+                    "description": "The application ID",
+                    "type": "string"
+                  }
+                }
+            },
+            "LifecycleReadyRequest": {
+                "title": "LifecycleReadyRequest",
+                "type": "object",
+                "required": [
+                  "parameters"
+                ],
+                "properties": {
+                  "parameters": {
+                    "description": "The associated lifecycle parameters",
+                    "$ref": "#/components/schemas/LifecycleReadyParameters"
+                  }
+                }
+            },
+            "LifecycleCloseRequest": {
+                "title": "LifecycleCloseRequest",
+                "type": "object",
+                "required": [
+                  "parameters"
+                ],
+                "properties": {
+                  "parameters": {
+                    "description": "The associated lifecycle parameters",
+                    "$ref": "#/components/schemas/LifecycleCloseParameters"
+                  }
+                }
+            },
+            "LifecycleFinishedRequest": {
+                "title": "LifecycleFinishedRequest",
+                "type": "object",
+                "required": [
+                  "parameters"
+                ],
+                "properties": {
+                  "parameters": {
+                    "description": "The associated lifecycle parameters",
+                    "$ref": "#/components/schemas/LifecycleFinishedParameters"
+                  }
+                }
+            }        
+        }
+    }
+}
