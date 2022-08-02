@@ -30,10 +30,10 @@
             "summary": "Request the content privacy settings for a specific app.",
             "params": [
                 {
-                    "name": "appId",
+                    "name": "listen",
                     "required": true,
                     "schema": {
-                        "type": "string"
+                        "type": "boolean"
                     }
                 }
             ],
@@ -53,7 +53,13 @@
                                     "type": "object",
                                     "properties": {
                                         "parameters": {
-                                            "const": null
+                                            "type": "object",
+                                            "required": ["appId"],
+                                            "properties": {
+                                                "appId": {
+                                                    "type": "string"
+                                                }
+                                            }
                                         }
                                     }
                                 }
@@ -67,15 +73,17 @@
                     "name": "Default Example",
                     "params": [
                         {
-                            "name": "appId",
-                            "value": "some-app"
+                            "name": "listen",
+                            "value": true
                         }
                     ],
                     "result": {
                         "name": "result",
                         "value": {
                             "correlationId": "xyz",
-                            "parameters": null
+                            "parameters": {
+                                "appId": "some-app"
+                            }
                         }
                     }
                 }
@@ -215,7 +223,122 @@
                     }
                 }
             ]
-        }        
+        },
+        {
+            "name": "onRequestAdvertisingPolicy",
+            "tags": [
+                {
+                    "name": "capabilities",
+                    "x-provides": "xrn:firebolt:capability:privacy:advertising"
+                },
+                {
+                    "name": "event",
+                    "x-response": {
+                        "type": "object",
+                        "required": [
+                            "limitAdTracking"
+                        ],
+                        "properties": {
+                            "limitAdTracking": {
+                                "type": "boolean"
+                            }
+                        },
+                        "examples": [
+                            {
+                                "limitAdTracking": true
+                            }
+                        ]
+                    }
+                }
+            ],
+            "summary": "Request the advertising privacy settings for the account or device.",
+            "params": [
+                {
+                    "name": "listen",
+                    "required": true,
+                    "schema": {
+                        "type": "boolean"
+                    }
+                }
+            ],
+            "result": {
+                "name": "result",
+                "schema": {
+                    "oneOf": [
+                        {
+                          "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ListenResponse"
+                        },
+                        {
+                            "allOf": [
+                                {
+                                    "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ProviderRequest"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "parameters": {
+                                            "const": null
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "examples": [
+                {
+                    "name": "Default Example",
+                    "params": [
+                        {
+                            "name": "listen",
+                            "value": true
+                        }
+                    ],
+                    "result": {
+                        "name": "result",
+                        "value": {
+                            "correlationId": "xyz",
+                            "parameters": null
+                        }
+                    }
+                }
+            ]            
+        },
+        {
+            "name": "limitAdTracking",
+            "tags": [
+                {
+                    "name": "property"
+                },
+                {
+                    "name": "capabilities",
+                    "x-manages": [
+                        "xrn:firebolt:capability:privacy:advertising"
+                    ]
+                }
+            ],
+            "summary": "Whether or not the user has enabled limited ad tracking.",
+            "params": [
+            ],
+            "result": {
+                "name": "lmt",
+                "schema": {
+                    "type": "boolean"
+                }
+            },
+            "examples": [
+                {
+                    "name": "Default Example",
+                    "params": [
+                    ],
+                    "result": {
+                        "name": "lmt",
+                        "value": true
+                    }
+                }
+            ]            
+        }
    ],
     "components": {
         "schemas": {
