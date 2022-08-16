@@ -64,7 +64,14 @@
                 }
             ],
             "tags": [
-                {
+              {
+                "name": "event",
+                "x-response": {
+                  "const": null,
+                  "examples": [null]                  
+                }
+              },
+              {
                   "name": "capabilities",
                   "x-provides": "xrn:firebolt:capability:app:lifecycle",
                   "x-allow-focus": false
@@ -96,6 +103,7 @@
                     "result": {
                         "name": "Default Result",
                         "value": {
+                          "correlationId": "123",
                           "parameters": {
                             "appId": "SomeAppId"
                           }
@@ -121,6 +129,15 @@
                   "name": "capabilities",
                   "x-provides": "xrn:firebolt:capability:app:lifecycle",
                   "x-allow-focus": false
+                },
+                {
+                  "name": "event",
+                  "x-response": {
+                    "const": null,
+                    "examples": [
+                      null
+                    ]        
+                  }
                 }
               ],
             "result": {
@@ -149,6 +166,7 @@
                     "result": {
                         "name": "Default Result",
                         "value": {
+                          "correlationId": "123",
                           "parameters": {
                             "appId": "SomeAppId",
                             "reason": "userExit"
@@ -175,6 +193,15 @@
                   "name": "capabilities",
                   "x-provides": "xrn:firebolt:capability:app:lifecycle",
                   "x-allow-focus": false
+                },
+                {
+                  "name": "event",
+                  "x-response": {
+                    "const": null,
+                    "examples": [
+                      null
+                    ]        
+                  }
                 }
               ],
             "result": {
@@ -203,6 +230,7 @@
                     "result": {
                         "name": "Default Result",
                         "value": {
+                          "correlationId": "123",
                           "parameters": {
                             "appId": "SomeAppId"
                           }
