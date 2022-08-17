@@ -1,14 +1,12 @@
-const win = globalThis || window
-
-if (!win.__firebolt) {
-    win.__firebolt = {}
+if (!window.__firebolt) {
+    window.__firebolt = {}
 }
 
 // wires up the mock transport w/out waiting
-win.__firebolt.mockTransportLayer = true
+window.__firebolt.mockTransportLayer = true
 
 // sets a flag that mock defaults impls can use to speed things up, e.g. Lifecycle/defaults.js
-win.__firebolt.automation = true
+window.__firebolt.automation = true
 
 let sendListener
 let receiver
@@ -35,4 +33,4 @@ export const transport = {
     }
 }
 
-win.__firebolt.setTransportLayer(transport)
+window.__firebolt.setTransportLayer(transport)
