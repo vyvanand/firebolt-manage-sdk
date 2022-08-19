@@ -64,31 +64,33 @@
                 }
             ],
             "tags": [
-              {
-                "name": "event",
-                "x-response": {
-                  "const": null,
-                  "examples": [null]                  
+                {
+                    "name": "event",
+                    "x-response": {
+                        "const": null,
+                        "examples": [
+                            null
+                        ]
+                    }
+                },
+                {
+                    "name": "capabilities",
+                    "x-provides": "xrn:firebolt:capability:app:lifecycle",
+                    "x-allow-focus": false
                 }
-              },
-              {
-                  "name": "capabilities",
-                  "x-provides": "xrn:firebolt:capability:app:lifecycle",
-                  "x-allow-focus": false
-                }
-              ],
+            ],
             "result": {
                 "name": "ready",
                 "summary": "The app has said they are ready",
                 "schema": {
                     "oneOf": [
                         {
-                          "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ListenResponse"
+                            "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ListenResponse"
                         },
                         {
-                          "$ref": "#/components/schemas/LifecycleReadyRequest"
+                            "$ref": "#/components/schemas/LifecycleReadyRequest"
                         }
-                    ]            
+                    ]
                 }
             },
             "examples": [
@@ -103,10 +105,10 @@
                     "result": {
                         "name": "Default Result",
                         "value": {
-                          "correlationId": "123",
-                          "parameters": {
-                            "appId": "SomeAppId"
-                          }
+                            "correlationId": "123",
+                            "parameters": {
+                                "appId": "SomeAppId"
+                            }
                         }
                     }
                 }
@@ -126,32 +128,32 @@
             ],
             "tags": [
                 {
-                  "name": "capabilities",
-                  "x-provides": "xrn:firebolt:capability:app:lifecycle",
-                  "x-allow-focus": false
+                    "name": "capabilities",
+                    "x-provides": "xrn:firebolt:capability:app:lifecycle",
+                    "x-allow-focus": false
                 },
                 {
-                  "name": "event",
-                  "x-response": {
-                    "const": null,
-                    "examples": [
-                      null
-                    ]        
-                  }
+                    "name": "event",
+                    "x-response": {
+                        "const": null,
+                        "examples": [
+                            null
+                        ]
+                    }
                 }
-              ],
+            ],
             "result": {
                 "name": "close",
                 "summary": "The app has requested to be closed",
                 "schema": {
                     "oneOf": [
                         {
-                          "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ListenResponse"
+                            "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ListenResponse"
                         },
                         {
-                          "$ref": "#/components/schemas/LifecycleCloseRequest"
+                            "$ref": "#/components/schemas/LifecycleCloseRequest"
                         }
-                    ]            
+                    ]
                 }
             },
             "examples": [
@@ -166,11 +168,11 @@
                     "result": {
                         "name": "Default Result",
                         "value": {
-                          "correlationId": "123",
-                          "parameters": {
-                            "appId": "SomeAppId",
-                            "reason": "userExit"
-                          }
+                            "correlationId": "123",
+                            "parameters": {
+                                "appId": "SomeAppId",
+                                "reason": "userExit"
+                            }
                         }
                     }
                 }
@@ -190,32 +192,32 @@
             ],
             "tags": [
                 {
-                  "name": "capabilities",
-                  "x-provides": "xrn:firebolt:capability:app:lifecycle",
-                  "x-allow-focus": false
+                    "name": "capabilities",
+                    "x-provides": "xrn:firebolt:capability:app:lifecycle",
+                    "x-allow-focus": false
                 },
                 {
-                  "name": "event",
-                  "x-response": {
-                    "const": null,
-                    "examples": [
-                      null
-                    ]        
-                  }
+                    "name": "event",
+                    "x-response": {
+                        "const": null,
+                        "examples": [
+                            null
+                        ]
+                    }
                 }
-              ],
+            ],
             "result": {
                 "name": "finished",
                 "summary": "The app has said they are finished",
                 "schema": {
                     "oneOf": [
                         {
-                          "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ListenResponse"
+                            "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ListenResponse"
                         },
                         {
-                          "$ref": "#/components/schemas/LifecycleFinishedRequest"
+                            "$ref": "#/components/schemas/LifecycleFinishedRequest"
                         }
-                    ]            
+                    ]
                 }
             },
             "examples": [
@@ -230,10 +232,10 @@
                     "result": {
                         "name": "Default Result",
                         "value": {
-                          "correlationId": "123",
-                          "parameters": {
-                            "appId": "SomeAppId"
-                          }
+                            "correlationId": "123",
+                            "parameters": {
+                                "appId": "SomeAppId"
+                            }
                         }
                     }
                 }
@@ -246,85 +248,85 @@
                 "title": "LifecycleReadyParameters",
                 "type": "object",
                 "required": [
-                  "appId"
+                    "appId"
                 ],
                 "properties": {
-                  "appId": {
-                    "description": "The application ID",
-                    "type": "string"
-                  }
+                    "appId": {
+                        "description": "The application ID",
+                        "type": "string"
+                    }
                 }
             },
             "LifecycleCloseParameters": {
                 "title": "LifecycleCloseParameters",
                 "type": "object",
                 "required": [
-                  "appId",
-                  "reason"
+                    "appId",
+                    "reason"
                 ],
                 "properties": {
-                  "appId": {
-                    "description": "The application ID",
-                    "type": "string"
-                  },
-                  "reason": {
-                    "description": "The close reason",
-                    "$ref": "https://meta.comcast.com/firebolt/lifecycle#/definitions/CloseReason"
-                  }
+                    "appId": {
+                        "description": "The application ID",
+                        "type": "string"
+                    },
+                    "reason": {
+                        "description": "The close reason",
+                        "$ref": "https://meta.comcast.com/firebolt/lifecycle#/definitions/CloseReason"
+                    }
                 }
             },
             "LifecycleFinishedParameters": {
                 "title": "LifecycleFinishedParameters",
                 "type": "object",
                 "required": [
-                  "appId"
+                    "appId"
                 ],
                 "properties": {
-                  "appId": {
-                    "description": "The application ID",
-                    "type": "string"
-                  }
+                    "appId": {
+                        "description": "The application ID",
+                        "type": "string"
+                    }
                 }
             },
             "LifecycleReadyRequest": {
                 "title": "LifecycleReadyRequest",
                 "type": "object",
                 "required": [
-                  "parameters"
+                    "parameters"
                 ],
                 "properties": {
-                  "parameters": {
-                    "description": "The associated lifecycle parameters",
-                    "$ref": "#/components/schemas/LifecycleReadyParameters"
-                  }
+                    "parameters": {
+                        "description": "The associated lifecycle parameters",
+                        "$ref": "#/components/schemas/LifecycleReadyParameters"
+                    }
                 }
             },
             "LifecycleCloseRequest": {
                 "title": "LifecycleCloseRequest",
                 "type": "object",
                 "required": [
-                  "parameters"
+                    "parameters"
                 ],
                 "properties": {
-                  "parameters": {
-                    "description": "The associated lifecycle parameters",
-                    "$ref": "#/components/schemas/LifecycleCloseParameters"
-                  }
+                    "parameters": {
+                        "description": "The associated lifecycle parameters",
+                        "$ref": "#/components/schemas/LifecycleCloseParameters"
+                    }
                 }
             },
             "LifecycleFinishedRequest": {
                 "title": "LifecycleFinishedRequest",
                 "type": "object",
                 "required": [
-                  "parameters"
+                    "parameters"
                 ],
                 "properties": {
-                  "parameters": {
-                    "description": "The associated lifecycle parameters",
-                    "$ref": "#/components/schemas/LifecycleFinishedParameters"
-                  }
+                    "parameters": {
+                        "description": "The associated lifecycle parameters",
+                        "$ref": "#/components/schemas/LifecycleFinishedParameters"
+                    }
                 }
-            }        
+            }
         }
     }
 }
