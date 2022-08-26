@@ -78,7 +78,13 @@
             "result": {
                 "name": "result",
                 "schema": {
-                    "const": null
+                    "type": "object",
+                    "required": ["sessionId"],
+                    "properties": {
+                        "sessionId" : {
+                            "type": "string"
+                        }
+                    }
                 }
             },
             "examples": [
@@ -111,7 +117,9 @@
                     ],
                     "result": {
                         "name": "defaultResult",
-                        "value": null
+                        "value": {
+                            "sessionId": "c0d012b4-0854-4bbc-82d5-ab52ac29dd94"
+                        }
                     }
                 }
             ]
@@ -553,6 +561,13 @@
                             "id": {
                                 "description": "The identifier for the runtime",
                                 "type": "string"
+                            },
+                            "transport": {
+                                "description": "The type of transport the application container will use to communicate to Firebolt",
+                                "type": "string",
+                                "enum": [
+                                    "bridge", "websocket"
+                                ]
                             }
                         }
                     },
