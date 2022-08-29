@@ -45,7 +45,7 @@ test("LifecycleManagement.session()", () => {
       id: "123",
     },
   };
-  return LifecycleManagement.session(dummyData).then((res: void) => {
-    expect(res).toEqual({});
+  return LifecycleManagement.session(dummyData).then((res: Object) => {
+    expect(res).not.toBeNull();
   });
 });
