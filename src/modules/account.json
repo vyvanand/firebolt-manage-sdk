@@ -77,15 +77,7 @@
         {
             "name": "onRequestSession",
             "summary": "Registers as a provider for when device needs a session",
-            "params": [
-                {
-                    "name": "listen",
-                    "summary": "Whether or not to listen for requests to this interface method.",
-                    "schema": {
-                        "type": "boolean"
-                    }
-                }
-            ],
+            "params": [],
             "tags": [
                 {
                     "name": "event",
@@ -109,30 +101,18 @@
                 "name": "session",
                 "summary": "The request to get a new session",
                 "schema": {
-                    "oneOf": [
-                        {
-                            "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ListenResponse"
-                        },
-                        {
-                            "type": "object",
-                            "properties": {
-                                "parameters": {
-                                    "const": null
-                                }
-                            }
+                    "type": "object",
+                    "properties": {
+                        "parameters": {
+                            "const": null
                         }
-                    ]
+                    }
                 }
             },
             "examples": [
                 {
                     "name": "Default Example",
-                    "params": [
-                        {
-                            "name": "listen",
-                            "value": true
-                        }
-                    ],
+                    "params": [],
                     "result": {
                         "name": "Default Result",
                         "value": {

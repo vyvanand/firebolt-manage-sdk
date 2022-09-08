@@ -26,25 +26,18 @@
             "result": {
                 "name": "name",
                 "schema": {
-                    "oneOf": [
+                    "allOf": [
                         {
-                            "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ListenResponse"
+                            "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ProviderRequest"
                         },
                         {
-                            "allOf": [
-                                {
-                                    "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ProviderRequest"
-                                },
-                                {
-                                    "type": "object",
-                                    "required": ["parameters"],
-                                    "properties": {
-                                        "parameters": {
-                                            "const": null
-                                        }
-                                    }
+                            "type": "object",
+                            "required": ["parameters"],
+                            "properties": {
+                                "parameters": {
+                                    "const": null
                                 }
-                            ]
+                            }
                         }
                     ]
                 }
@@ -160,25 +153,18 @@
             "result": {
                 "name": "code",
                 "schema": {
-                    "oneOf": [
+                    "allOf": [
                         {
-                            "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ListenResponse"
+                            "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ProviderRequest"
                         },
                         {
-                            "allOf": [
-                                {
-                                    "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ProviderRequest"
-                                },
-                                {
-                                    "type": "object",
-                                    "required": ["parameters"],
-                                    "properties": {
-                                        "parameters": {
-                                            "const": null
-                                        }
-                                    }
+                            "type": "object",
+                            "required": ["parameters"],
+                            "properties": {
+                                "parameters": {
+                                    "const": null
                                 }
-                            ]
+                            }
                         }
                     ]
                 }

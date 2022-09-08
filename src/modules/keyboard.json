@@ -9,15 +9,6 @@
     {
       "name": "onRequestStandard",
       "summary": "Registers as a provider for when the user should be shown a standard keyboard.",
-      "params": [
-        {
-          "name": "listen",
-          "summary": "Whether or not to listen for requests to this interface method.",
-          "schema": {
-            "type": "boolean"
-          }
-        }
-      ],
       "tags": [
         {
           "name": "event",
@@ -36,29 +27,18 @@
           "x-allow-focus": true
         }
       ],
+      "params": [],
       "result": {
         "name": "sessionRequest",
         "summary": "The request to start a keyboard session",
         "schema": {
-          "oneOf": [
-            {
-              "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ListenResponse"
-            },
-            {
-              "$ref": "#/components/schemas/KeyboardProviderRequest"
-            }
-          ]
+          "$ref": "#/components/schemas/KeyboardProviderRequest"
         }
       },
       "examples": [
         {
           "name": "Default Example",
-          "params": [
-            {
-              "name": "listen",
-              "value": true
-            }
-          ],
+          "params": [],
           "result": {
             "name": "Default Result",
             "value": {
@@ -74,15 +54,6 @@
     {
       "name": "onRequestPassword",
       "summary": "Registers as a provider for when the user should be shown a password keyboard, with dots for each character entered.",
-      "params": [
-        {
-          "name": "listen",
-          "summary": "Whether or not to listen for requests to this interface method.",
-          "schema": {
-            "type": "boolean"
-          }
-        }
-      ],
       "tags": [
         {
           "name": "event",
@@ -101,29 +72,18 @@
           "x-allow-focus": true
         }
       ],
+      "params": [],
       "result": {
         "name": "sessionRequest",
         "summary": "The request to start a keyboard session",
         "schema": {
-          "oneOf": [
-            {
-              "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ListenResponse"
-            },
-            {
-              "$ref": "#/components/schemas/KeyboardProviderRequest"
-            }
-          ]
+          "$ref": "#/components/schemas/KeyboardProviderRequest"
         }
       },
       "examples": [
         {
           "name": "Default Example",
-          "params": [
-            {
-              "name": "listen",
-              "value": true
-            }
-          ],
+          "params": [],
           "result": {
             "name": "Default Result",
             "value": {
@@ -139,15 +99,6 @@
     {
       "name": "onRequestEmail",
       "summary": "Registers as a provider for when the user should be shown a keyboard optimized for email address entry.",
-      "params": [
-        {
-          "name": "listen",
-          "summary": "Whether or not to listen for requests to this interface method.",
-          "schema": {
-            "type": "boolean"
-          }
-        }
-      ],
       "tags": [
         {
           "name": "event",
@@ -166,29 +117,18 @@
           "x-allow-focus": true
         }
       ],
+      "params": [],
       "result": {
         "name": "sessionRequest",
         "summary": "The request to start a keyboard session",
         "schema": {
-          "oneOf": [
-            {
-              "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ListenResponse"
-            },
-            {
-              "$ref": "#/components/schemas/KeyboardProviderRequest"
-            }
-          ]
+          "$ref": "#/components/schemas/KeyboardProviderRequest"
         }
       },
       "examples": [
         {
           "name": "Default Example",
-          "params": [
-            {
-              "name": "listen",
-              "value": true
-            }
-          ],
+          "params": [],
           "result": {
             "name": "Default Result",
             "value": {

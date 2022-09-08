@@ -44,38 +44,17 @@
                 }
             ],
             "summary": "Listen for when the device is powered up.",
-            "params": [
-                {
-                    "name": "listen",
-                    "required": true,
-                    "summary": "whether to listen, or stop listening",
-                    "schema": {
-                        "type": "boolean"
-                    }
-                }
-            ],
+            "params": [],
             "result": {
                 "name": "value",
                 "schema": {
-                    "oneOf": [
-                        {
-                            "const": null
-                        },
-                        {
-                            "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ListenResponse"
-                        }
-                    ]
+                    "const": null
                 }
             },
             "examples": [
                 {
                     "name": "Default Example",
-                    "params": [
-                        {
-                            "name": "listen",
-                            "value": true
-                        }
-                    ],
+                    "params": [],
                     "result": {
                         "name": "Default Result",
                         "value": {
@@ -94,43 +73,21 @@
                 }
             ],
             "summary": "Listen for when the device is put into the active power state.",
-            "params": [
-                {
-                    "name": "listen",
-                    "required": true,
-                    "summary": "whether to listen, or stop listening",
-                    "schema": {
-                        "type": "boolean"
-                    }
-                }
-            ],
+            "params": [],
             "result": {
                 "name": "value",
                 "schema": {
-                    "oneOf": [
-                        {
-                            "$ref": "#/components/schemas/ActiveEvent"
-                        },
-                        {
-                            "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ListenResponse"
-                        }
-                    ]
+                    "$ref": "#/components/schemas/ActiveEvent"
                 }
             },
             "examples": [
                 {
                     "name": "Default Example",
-                    "params": [
-                        {
-                            "name": "listen",
-                            "value": true
-                        }
-                    ],
+                    "params": [],
                     "result": {
-                        "name": "Default Result",
+                        "name": "event",
                         "value": {
-                            "event": "Power.onActive",
-                            "listening": true
+                            "reason": "powerOn"
                         }
                     }
                 }
@@ -144,43 +101,21 @@
                 }
             ],
             "summary": "Listen for when the device is moved from active to active-standby.",
-            "params": [
-                {
-                    "name": "listen",
-                    "required": true,
-                    "summary": "whether to listen, or stop listening",
-                    "schema": {
-                        "type": "boolean"
-                    }
-                }
-            ],
+            "params": [],
             "result": {
                 "name": "value",
                 "schema": {
-                    "oneOf": [
-                        {
-                            "$ref": "#/components/schemas/StandbyEvent"
-                        },
-                        {
-                            "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ListenResponse"
-                        }                        
-                    ]
+                    "$ref": "#/components/schemas/StandbyEvent"
                 }
             },
             "examples": [
                 {
                     "name": "Default Example",
-                    "params": [
-                        {
-                            "name": "listen",
-                            "value": true
-                        }
-                    ],
+                    "params": [],
                     "result": {
                         "name": "Default Result",
                         "value": {
-                            "event": "Power.onActiveStandby",
-                            "listening": true
+                            "reason": "inactivity"
                         }
                     }
                 }
@@ -194,43 +129,21 @@
                 }
             ],
             "summary": "Listen for when the device is woken from a suspended state.",
-            "params": [
-                {
-                    "name": "listen",
-                    "required": true,
-                    "summary": "whether to listen, or stop listening",
-                    "schema": {
-                        "type": "boolean"
-                    }
-                }
-            ],
+            "params": [],
             "result": {
                 "name": "value",
                 "schema": {
-                    "oneOf": [
-                        {
-                            "$ref": "#/components/schemas/ResumeEvent"
-                        },
-                        {
-                            "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ListenResponse"
-                        }
-                    ]
+                    "$ref": "#/components/schemas/ResumeEvent"
                 }
             },
             "examples": [
                 {
                     "name": "Default Example",
-                    "params": [
-                        {
-                            "name": "listen",
-                            "value": true
-                        }
-                    ],
+                    "params": [],
                     "result": {
                         "name": "Default Result",
                         "value": {
-                            "event": "Power.onResumeFromSuspend",
-                            "listening": true
+                            "reason": "rcu"
                         }
                     }
                 }
@@ -244,43 +157,21 @@
                 }
             ],
             "summary": "Listen for when the device will be suspended from the active-standby state. CPU excution will cease shortly after this event.",
-            "params": [
-                {
-                    "name": "listen",
-                    "required": true,
-                    "summary": "whether to listen, or stop listening",
-                    "schema": {
-                        "type": "boolean"
-                    }
-                }
-            ],
+            "params": [],
             "result": {
                 "name": "value",
                 "schema": {
-                    "oneOf": [
-                        {
-                            "$ref": "#/components/schemas/SuspendEvent"
-                        },
-                        {
-                            "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ListenResponse"
-                        }
-                    ]
+                    "$ref": "#/components/schemas/SuspendEvent"
                 }
             },
             "examples": [
                 {
                     "name": "Default Example",
-                    "params": [
-                        {
-                            "name": "listen",
-                            "value": true
-                        }
-                    ],
+                    "params": [],
                     "result": {
                         "name": "Default Result",
                         "value": {
-                            "event": "Power.onSuspendPending",
-                            "listening": true
+                            "reason": "frontPanel"
                         }
                     }
                 }
@@ -294,45 +185,21 @@
                 }
             ],
             "summary": "Listen for when the device has become idle, and will be moved from active, to active-standby. This will fire with enough time to prompt the user to cancel.",
-            "params": [
-                {
-                    "name": "listen",
-                    "required": true,
-                    "summary": "whether to listen, or stop listening",
-                    "schema": {
-                        "type": "boolean"
-                    }
-                }
-            ],
+            "params": [],
             "result": {
                 "name": "value",
                 "schema": {
-                    "oneOf": [
-                        {
-                            "const": null
-                        },
-                        {
-                            "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ListenResponse"
-                        }
-                    ]
+                    "const": null
                 }
             }
             ,
             "examples": [
                 {
                     "name": "Default Example",
-                    "params": [
-                        {
-                            "name": "listen",
-                            "value": true
-                        }
-                    ],
+                    "params": [],
                     "result": {
-                        "name": "Default Result",
-                        "value": {
-                            "event": "Power.onInactivity",
-                            "listening": true
-                        }
+                        "name": "data",
+                        "value": null
                     }
                 }
             ]
@@ -345,43 +212,21 @@
                 }
             ],
             "summary": "Listen for when the something happens to invalidate the previous inactivity state.",
-            "params": [
-                {
-                    "name": "listen",
-                    "required": true,
-                    "summary": "whether to listen, or stop listening",
-                    "schema": {
-                        "type": "boolean"
-                    }
-                }
-            ],
+            "params": [],
             "result": {
                 "name": "value",
                 "schema": {
-                    "oneOf": [
-                        {
-                            "$ref": "#/components/schemas/InactivityCancelledEvent"
-                        },
-                        {
-                            "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ListenResponse"
-                        }
-                    ]
+                    "$ref": "#/components/schemas/InactivityCancelledEvent"
                 }
             },
             "examples": [
                 {
                     "name": "Default Example",
-                    "params": [
-                        {
-                            "name": "listen",
-                            "value": true
-                        }
-                    ],
+                    "params": [],
                     "result": {
                         "name": "Default Result",
                         "value": {
-                            "event": "Power.onInactivityCancelled",
-                            "listening": true
+                            "reason": "rcu"
                         }
                     }
                 }

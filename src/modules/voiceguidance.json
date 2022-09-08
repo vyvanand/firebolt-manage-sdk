@@ -25,19 +25,12 @@
             "result": {
                 "name": "result",
                 "schema": {
-                    "oneOf": [
-                        {
-                            "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ListenResponse"
-                        },
-                        {
-                            "type": "object",
-                            "properties": {
-                                "parameters": {
-                                    "const": null
-                                }
-                            }
+                    "type": "object",
+                    "properties": {
+                        "parameters": {
+                            "const": null
                         }
-                    ]
+                    }
                 }
             },
             "examples": [

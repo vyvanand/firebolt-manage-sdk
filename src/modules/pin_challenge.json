@@ -9,15 +9,6 @@
     {
       "name": "onRequestChallenge",
       "summary": "Registers as a provider for when the user should be challenged in order to confirm access to a capability through a pin prompt",
-      "params": [
-        {
-          "name": "listen",
-          "summary": "Whether or not to listen for requests to this interface method.",
-          "schema": {
-            "type": "boolean"
-          }
-        }
-      ],
       "tags": [
         {
           "name": "event",
@@ -41,29 +32,18 @@
           "x-allow-focus": true
         }
       ],
+      "params": [],
       "result": {
         "name": "challenge",
         "summary": "The request to challenge the user",
         "schema": {
-          "oneOf": [
-            {
-              "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ListenResponse"
-            },
-            {
-              "$ref": "#/components/schemas/PinChallengeProviderRequest"
-            }
-          ]
+          "$ref": "#/components/schemas/PinChallengeProviderRequest"
         }
       },
       "examples": [
         {
           "name": "Default Example",
-          "params": [
-            {
-              "name": "listen",
-              "value": true
-            }
-          ],
+          "params": [],
           "result": {
             "name": "Default Result",
             "value": {

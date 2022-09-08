@@ -4,6 +4,7 @@ import {
   Account,
   Device,
   LifecycleManagement,
+  PinChallenge
 } from "../../dist/lib/firebolt-manage";
 
 class AccPovider implements Account.SessionProvider {
@@ -86,3 +87,15 @@ test("LifecycleManagement.provide() declarations", () => {
   );
   expect(1).toBe(1);
 });
+
+class PinManager implements PinChallenge.ChallengeProvider {
+    challenge(parameters: PinChallenge.PinChallenge, session: PinChallenge.FocusableProviderSession):Promise<PinChallenge.PinChallengeResult> {
+        return Promise.resolve({
+            granted: true,
+            reason: PinChallenge.ResultReason.CORRECT_PIN
+        })
+        console.log(parameters, session)
+    }
+}
+
+PinChallenge.provide('xrn:firebolt:capability:usergrant:pinchallenge', new PinManager())
