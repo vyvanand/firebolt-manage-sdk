@@ -28,27 +28,42 @@
                 }
             ],
             "summary": "Request the content privacy settings for a specific app.",
-            "params": [],
+            "params": [
+                {
+                    "name": "listen",
+                    "required": true,
+                    "schema": {
+                        "type": "boolean"
+                    }
+                }
+            ],
             "result": {
                 "name": "result",
                 "schema": {
-                    "allOf": [
+                    "oneOf": [
                         {
-                            "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ProviderRequest"
+                          "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ListenResponse"
                         },
                         {
-                            "type": "object",
-                            "properties": {
-                                "parameters": {
+                            "allOf": [
+                                {
+                                    "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ProviderRequest"
+                                },
+                                {
                                     "type": "object",
-                                    "required": ["appId"],
                                     "properties": {
-                                        "appId": {
-                                            "type": "string"
+                                        "parameters": {
+                                            "type": "object",
+                                            "required": ["appId"],
+                                            "properties": {
+                                                "appId": {
+                                                    "type": "string"
+                                                }
+                                            }
                                         }
                                     }
                                 }
-                            }
+                            ]
                         }
                     ]
                 }
@@ -56,7 +71,12 @@
             "examples": [
                 {
                     "name": "Default Example",
-                    "params": [],
+                    "params": [
+                        {
+                            "name": "listen",
+                            "value": true
+                        }
+                    ],
                     "result": {
                         "name": "result",
                         "value": {
@@ -232,21 +252,36 @@
                 }
             ],
             "summary": "Request the advertising privacy settings for the account or device.",
-            "params": [],
+            "params": [
+                {
+                    "name": "listen",
+                    "required": true,
+                    "schema": {
+                        "type": "boolean"
+                    }
+                }
+            ],
             "result": {
                 "name": "result",
                 "schema": {
-                    "allOf": [
+                    "oneOf": [
                         {
-                            "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ProviderRequest"
+                          "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ListenResponse"
                         },
                         {
-                            "type": "object",
-                            "properties": {
-                                "parameters": {
-                                    "const": null
+                            "allOf": [
+                                {
+                                    "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ProviderRequest"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "parameters": {
+                                            "const": null
+                                        }
+                                    }
                                 }
-                            }
+                            ]
                         }
                     ]
                 }
@@ -254,7 +289,12 @@
             "examples": [
                 {
                     "name": "Default Example",
-                    "params": [],
+                    "params": [
+                        {
+                            "name": "listen",
+                            "value": true
+                        }
+                    ],
                     "result": {
                         "name": "result",
                         "value": {

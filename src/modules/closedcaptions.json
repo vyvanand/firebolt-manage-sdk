@@ -23,11 +23,26 @@
                 }
             ],
             "summary": "Dispatches a request for the current closed-captions settings to the closed-captions settings provider.",
-            "params": [],
+            "params": [
+                {
+                    "name": "listen",
+                    "summary": "Whether or not to listen for requests to this interface method.",
+                    "schema": {
+                        "type": "boolean"
+                    }
+                }
+            ],
             "result": {
                 "name": "result",
                 "schema": {
-                    "$ref": "#/components/schemas/ClosedCaptionsSettingsProviderRequest"
+                    "oneOf": [
+                        {
+                            "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ListenResponse"
+                        },
+                        {
+                            "$ref": "#/components/schemas/ClosedCaptionsSettingsProviderRequest"
+                        }
+                    ]
                 }
             },
             "examples": [
