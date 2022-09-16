@@ -521,16 +521,14 @@
                 "title": "AppSession",
                 "type": "object",
                 "required": [
-                    "app",
-                    "runtime"
+                    "app"
                 ],
                 "properties": {
                     "app": {
                         "description": "Information about the application",
                         "type": "object",
                         "required": [
-                            "id",
-                            "url"
+                            "id"
                         ],
                         "properties": {
                             "id": {
@@ -555,7 +553,6 @@
                         "description": "Information about the runtime that the application is running in",
                         "type": "object",
                         "required": [
-                            "id"
                         ],
                         "properties": {
                             "id": {
