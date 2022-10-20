@@ -112,6 +112,13 @@
                     "schema": {
                         "type": "string"
                     }
+                },
+                {
+                    "name": "distributorId",
+                    "summary": "The id of the distributor in the back office.",
+                    "schema": {
+                        "type": "string"
+                    }
                 }
             ],
             "result": {
@@ -135,6 +142,27 @@
                     ],
                     "result": {
                         "name": "defaultResult",
+                        "value": null
+                    }
+                },
+                {
+                    "name": "With distributor id",
+                    "params": [
+                        {
+                            "name": "accountId",
+                            "value": "12345678910"
+                        },
+                        {
+                            "name": "deviceId",
+                            "value": "987654321111"
+                        },
+                        {
+                            "name": "distributorId",
+                            "value": "global_partner"
+                        }
+                    ],
+                    "result": {
+                        "name": "partnerResult",
                         "value": null
                     }
                 }
