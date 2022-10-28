@@ -25,18 +25,6 @@ class CCProvider implements ClosedCaptions.SettingsProvider {
   }
 }
 
-class DeviceProvider implements Device.DeviceSettingsProvider {
-  name(parameters: object, session: Device.ProviderSession): Promise<string> {
-    return Promise.resolve(null);
-  }
-  postalCode(
-    parameters: object,
-    session: Device.ProviderSession
-  ): Promise<string> {
-    return Promise.resolve(null);
-  }
-}
-
 class LCMProvider implements LifecycleManagement.LifecycleAppProvider {
   ready(
     parameters: LifecycleManagement.LifecycleReadyParameters,
@@ -68,14 +56,6 @@ test("ClosedCaptions.provide() declarations ", () => {
 
 test("Account.provide() declarations", () => {
   Account.provide("xrn:firebolt:capability:account:session", new AccPovider());
-  expect(1).toBe(1);
-});
-
-test("Device.provide() declarations", () => {
-  Device.provide(
-    "xrn:firebolt:capability:settings:device",
-    new DeviceProvider()
-  );
   expect(1).toBe(1);
 });
 

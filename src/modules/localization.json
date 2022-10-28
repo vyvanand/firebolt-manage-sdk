@@ -147,6 +147,36 @@
                     }
                 }
             ]
+        },
+        {
+            "name": "postalCode",
+            "tags": [
+                {
+                    "name": "property"
+                },
+                {
+                    "name": "capabilities",
+                    "x-manages": ["xrn:firebolt:capability:settings:postalCode"]
+                }
+            ],
+            "summary": "The user-assigned postal code of this device.",
+            "params": [],
+            "result": {
+                "name": "code",
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "examples": [
+                {
+                    "name": "Default Example",
+                    "params": [],
+                    "result": {
+                        "name": "code",
+                        "value": "19103"
+                    }
+                }
+            ]
         }
     ]
 }

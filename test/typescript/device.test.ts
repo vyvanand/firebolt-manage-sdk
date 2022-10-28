@@ -31,37 +31,8 @@ test("Device.provision()", () => {
   });
 });
 
-test("Device.postalCode()", () => {
-  return Device.postalCode().then((res: string) => {
-    expect(res).toEqual("19103");
-  });
-});
-
 test("Device.developerMode()", () => {
   return Device.developerMode().then((res: boolean) => {
     expect(res).toBe(true);
   });
-});
-
-test("Device.listen()", () => {
-  return Device.listen("requestPostalCode", () => {}).then((res: Number) => {
-    expect(res > 0).toBe(true);
-  });
-});
-
-test("Device.once()", () => {
-  return Device.once("requestPostalCode", () => {}).then((res: Number) => {
-    expect(res > 0).toBe(true);
-  });
-});
-
-test("Device.clear()", () => {
-  const result = Device.clear(1);
-  expect(result).toBe(undefined);
-});
-
-test("Device.provide() with blank object", () => {
-  expect(() => {
-    Device.provide("xrn:firebolt:capability:settings:device", {});
-  }).toThrow();
 });

@@ -67,3 +67,9 @@ test("Localization.clear()", () => {
   const result = Localization.clear(1);
   expect(result).toBe(undefined);
 });
+
+test("Device.postalCode()", () => {
+  return Localization.postalCode().then((res: string) => {
+    expect(res).toEqual("19103");
+  });
+});
