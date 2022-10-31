@@ -9,15 +9,7 @@
         {
             "name": "onRequestShow",
             "summary": "Registers as a provider for when the user should be shown a system message",
-            "params": [
-                {
-                    "name": "listen",
-                    "summary": "Whether or not to listen for requests to this interface method.",
-                    "schema": {
-                        "type": "boolean"
-                    }
-                }
-            ],
+            "params": [],
             "tags": [
                 {
                     "name": "event",
@@ -38,25 +30,14 @@
                 "name": "message",
                 "summary": "The message to display to the user",
                 "schema": {
-                    "oneOf": [
-                        {
-                            "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ListenResponse"
-                        },
-                        {
-                            "$ref": "#/components/schemas/SystemMessageProviderRequest"
-                        }
-                    ]
+                                                "$ref": "#/components/schemas/SystemMessageProviderRequest"
+                        
                 }
             },
             "examples": [
                 {
                     "name": "Default Example",
-                    "params": [
-                        {
-                            "name": "listen",
-                            "value": true
-                        }
-                    ],
+                    "params": [],
                     "result": {
                         "name": "Default Result",
                         "value": {

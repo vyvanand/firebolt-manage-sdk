@@ -109,7 +109,7 @@ test("clear", () => {
 test("provide", () => {
   expect(() => {
     ClosedCaptions.provide(
-      "xrn:firebolt:capability:settings:closedcaptions",
+      "xrn:firebolt:capability:accessibility:closedcaptions",
       {}
     );
   }).toThrow();

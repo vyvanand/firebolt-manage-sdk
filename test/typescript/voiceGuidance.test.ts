@@ -87,7 +87,7 @@ test("VoiceGuidance.clear()", () => {
 
 test("VoiceGuidance.provide() declarations ", () => {
   VoiceGuidance.provide(
-    "xrn:firebolt:capability:settings:voiceguidance",
+    "xrn:firebolt:capability:accessibility:voiceguidance",
     new VGProvider()
   );
   expect(1).toBe(1);
@@ -95,6 +95,6 @@ test("VoiceGuidance.provide() declarations ", () => {
 
 test("VoiceGuidance.provide() with blank object", () => {
   expect(() => {
-    VoiceGuidance.provide("xrn:firebolt:capability:settings:voiceguidance", {});
+    VoiceGuidance.provide("xrn:firebolt:capability:accessibility:voiceguidance", {});
   }).toThrow();
 });

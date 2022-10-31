@@ -54,7 +54,7 @@ beforeAll( () => {
         }
     })
 
-    ClosedCaptions.provide('xrn:firebolt:capability:settings:closedcaptions', {
+    ClosedCaptions.provide('xrn:firebolt:capability:accessibility:closedcaptions', {
         settings: (...args) => {
             ccSession = args[1]
             return Promise.resolve({

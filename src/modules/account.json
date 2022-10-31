@@ -34,6 +34,14 @@
         {
             "name": "session",
             "summary": "Used by a distributor to push Session token to firebolt.",
+            "tags": [
+                {
+                    "name": "capabilities",
+                    "x-manages": [
+                        "xrn:firebolt:capability:token:session"
+                    ]
+                }
+            ],
             "params": [
                 {
                     "name": "token",
@@ -77,15 +85,7 @@
         {
             "name": "onRequestSession",
             "summary": "Registers as a provider for when device needs a session",
-            "params": [
-                {
-                    "name": "listen",
-                    "summary": "Whether or not to listen for requests to this interface method.",
-                    "schema": {
-                        "type": "boolean"
-                    }
-                }
-            ],
+            "params": [],
             "tags": [
                 {
                     "name": "event",
@@ -101,7 +101,7 @@
                 },
                 {
                     "name": "capabilities",
-                    "x-provides": "xrn:firebolt:capability:account:session",
+                    "x-provides": "xrn:firebolt:capability:token:session",
                     "x-allow-focus": true
                 }
             ],
@@ -109,30 +109,18 @@
                 "name": "session",
                 "summary": "The request to get a new session",
                 "schema": {
-                    "oneOf": [
-                        {
-                            "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ListenResponse"
-                        },
-                        {
-                            "type": "object",
-                            "properties": {
-                                "parameters": {
-                                    "const": null
-                                }
-                            }
+                    "type": "object",
+                    "properties": {
+                        "parameters": {
+                            "const": null
                         }
-                    ]
+                    }
                 }
             },
             "examples": [
                 {
                     "name": "Default Example",
-                    "params": [
-                        {
-                            "name": "listen",
-                            "value": true
-                        }
-                    ],
+                    "params": [],
                     "result": {
                         "name": "Default Result",
                         "value": {

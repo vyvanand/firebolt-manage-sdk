@@ -25,7 +25,7 @@ class CCProvider implements ClosedCaptions.SettingsProvider {
   }
 }
 
-class LCMProvider implements LifecycleManagement.LifecycleAppProvider {
+class LCMProvider implements LifecycleManagement.StateProvider {
   ready(
     parameters: LifecycleManagement.LifecycleReadyParameters,
     session: LifecycleManagement.ProviderSession
@@ -48,20 +48,20 @@ class LCMProvider implements LifecycleManagement.LifecycleAppProvider {
 
 test("ClosedCaptions.provide() declarations ", () => {
   ClosedCaptions.provide(
-    "xrn:firebolt:capability:settings:closedcaptions",
+    "xrn:firebolt:capability:accessibility:closedcaptions",
     new CCProvider()
   );
   expect(1).toBe(1);
 });
 
 test("Account.provide() declarations", () => {
-  Account.provide("xrn:firebolt:capability:account:session", new AccPovider());
+  Account.provide("xrn:firebolt:capability:token:session", new AccPovider());
   expect(1).toBe(1);
 });
 
 test("LifecycleManagement.provide() declarations", () => {
   LifecycleManagement.provide(
-    "xrn:firebolt:capability:app:lifecycle",
+    "xrn:firebolt:capability:lifecycle:state",
     new LCMProvider()
   );
   expect(1).toBe(1);

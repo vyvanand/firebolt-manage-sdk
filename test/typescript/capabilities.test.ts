@@ -47,113 +47,24 @@ test("Capabilities.granted()", () => {
   );
 });
 
-test("Capabilities.info()", () => {
-  const expected: Capabilities.CapabilityInfo[] = [
-    {
-      available: true,
-      capability: "xrn:firebolt:capability:device:model",
-      granted: true,
-      permitted: true,
-      role: "use",
-      supported: true,
-    },
-    {
-      available: true,
-      capability: "xrn:firebolt:capability:keyboard",
-      granted: true,
-      permitted: true,
-      role: "use",
-      supported: true,
-    },
-    {
-      available: false,
-      capability: "xrn:firebolt:capability:protocol:bluetoothle",
-      details: ["unsupported"],
-      granted: false,
-      permitted: false,
-      role: "use",
-      supported: false,
-    },
-    {
-      available: true,
-      capability: "xrn:firebolt:capability:token:device",
-      granted: true,
-      permitted: true,
-      role: "use",
-      supported: true,
-    },
-    {
-      available: false,
-      capability: "xrn:firebolt:capability:token:platform",
-      details: ["unavailable"],
-      granted: false,
-      permitted: false,
-      role: "use",
-      supported: true,
-    },
-    {
-      available: false,
-      capability: "xrn:firebolt:capability:protocol:moca",
-      details: ["disabled", "unavailable"],
-      granted: false,
-      permitted: false,
-      role: "use",
-      supported: true,
-    },
-    {
-      available: true,
-      capability: "xrn:firebolt:capability:wifi:scan",
-      details: ["unpermitted"],
-      granted: false,
-      permitted: false,
-      role: "use",
-      supported: true,
-    },
-    {
-      available: true,
-      capability: "xrn:firebolt:capability:localization:postalCode",
-      details: ["ungranted"],
-      granted: false,
-      permitted: true,
-      role: "use",
-      supported: true,
-    },
-    {
-      available: true,
-      capability: "xrn:firebolt:capability:localization:postalCode",
-      details: ["ungranted"],
-      granted: false,
-      permitted: true,
-      role: "use",
-      supported: true,
-    },
-    {
-      available: true,
-      capability: "xrn:firebolt:capability:localization:locality",
-      details: ["grantDenied", "ungranted"],
-      granted: false,
-      permitted: true,
-      role: "use",
-      supported: true,
-    },
-  ];
-
-  return Capabilities.info("manage", []).then(
-    (res: Capabilities.CapabilityInfo[]) => {
-      expect(res).toEqual(expect.arrayContaining(expected));
-    }
-  );
-});
-
 test("Capabilities.request()", () => {
   const expected: Capabilities.CapabilityInfo[] = [
     {
       available: true,
       capability: "xrn:firebolt:capability:commerce:purchase",
-      granted: true,
-      permitted: true,
-      role: "use",
       supported: true,
+      use: {
+        permitted: true,
+        granted: true
+      },
+      manage: {
+        permitted: true,
+        granted: true
+      },
+      provide: {
+        permitted: true,
+        granted: true
+      }
     },
   ];
   return Capabilities.request([

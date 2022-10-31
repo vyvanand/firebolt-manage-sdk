@@ -79,6 +79,14 @@
     {
       "name": "pair",
       "summary": "Pair an accessory with the device.",
+      "tags": [
+        {
+          "name": "capabilities",
+          "x-uses": [
+            "xrn:firebolt:capability:accessory:pair"
+          ]
+        }
+      ],
       "params": [
         {
           "name": "type",
@@ -190,6 +198,14 @@
     {
       "name": "list",
       "summary": "Provides a list of Accesories paired to the device.",
+      "tags": [
+        {
+          "name": "capabilities",
+          "x-uses": [
+            "xrn:firebolt:capability:accessory:pair"
+          ]
+        }
+      ],
       "params": [
         {
           "name": "type",

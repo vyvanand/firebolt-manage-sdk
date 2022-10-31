@@ -29,7 +29,7 @@ test("LifecycleManagement.setState()", () => {
 
 test("LifecycleManagement.provide() with blank object", () => {
   expect(() => {
-    LifecycleManagement.provide("xrn:firebolt:capability:app:lifecycle", {});
+    LifecycleManagement.provide("xrn:firebolt:capability:lifecycle:state", {});
   }).toThrow();
 });
 

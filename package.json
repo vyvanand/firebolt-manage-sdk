@@ -6,7 +6,7 @@
   "types": "./dist/lib/firebolt-manage.d.ts",
   "type": "module",
   "scripts": {
-    "prepare": "npm run prepare:setup && npm run dist:docs && npm run dist:d && npm run dist:sdk",
+    "prepare": "npm run prepare:setup && npm run build:openrpc && npm run dist:docs && npm run dist:d && npm run dist:sdk",
     "prepare:setup": "npm run clean && npx mkdirp ./dist/docs ./dist/lib ./build/docs/markdown ./build/sdk/javascript/src",
     "validate": "firebolt-openrpc --task validate --source ./src --shared-schemas node_modules/@firebolt-js/schemas/src/schemas/ && npm run build:openrpc && firebolt-openrpc --task validate --source ./dist/firebolt-manage-open-rpc.json --shared-schemas node_modules/@firebolt-js/schemas/src/schemas/",
     "build:openrpc": "firebolt-openrpc --task openrpc --source ./src --template ./src/template/openrpc/template.json --output ./dist/firebolt-manage-open-rpc.json --shared-schemas node_modules/@firebolt-js/schemas/src/schemas/",
@@ -35,9 +35,10 @@
   },
   "homepage": "https://github.com/rdkcentral/firebolt-manage-sdk#readme",
   "devDependencies": {
-    "@firebolt-js/openrpc": "git://github.com/rdkcentral/firebolt-openrpc.git#pre-context",
-    "@firebolt-js/schemas": "git://github.com/rdkcentral/firebolt-schemas.git#bumblebee",
+    "@firebolt-js/openrpc": "^1.7.0-next.3",
+    "@firebolt-js/schemas": "^0.5.0-next.0",
     "ajv": "^6.12.6",
+    "husky": "^8.0.0",
     "jest": "^28.1.3",
     "mkdirp": "^0.5.6",
     "rimraf": "^3.0.2",

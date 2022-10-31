@@ -39,6 +39,17 @@
         {
             "name": "provision",
             "summary": "Used by a distributor to push provision info to firebolt.",
+            "tags": [
+                {
+                  "name": "capabilities",
+                  "x-manages": [
+                    "xrn:firebolt:capability:account:id",
+                    "xrn:firebolt:capability:device:id",
+                    "xrn:firebolt:capability:device:distributor"
+                  ]
+                }
+              ],
+        
             "params": [
                 {
                     "name": "accountId",

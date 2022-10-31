@@ -116,6 +116,14 @@
     {
       "name": "scan",
       "summary": "Scan available wifi networks in the location.",
+      "tags": [
+        {
+          "name": "capabilities",
+          "x-uses": [
+            "xrn:firebolt:capability:protocol:wifi"
+          ]
+        }
+      ],
       "params": [
         {
           "name": "timeout",
@@ -171,6 +179,14 @@
     {
       "name": "connect",
       "summary": "Connect the device to the specified SSID.",
+      "tags": [
+        {
+          "name": "capabilities",
+          "x-uses": [
+            "xrn:firebolt:capability:protocol:wifi"
+          ]
+        }
+      ],
       "params": [
         {
           "name": "ssid",
@@ -258,6 +274,14 @@
     {
       "name": "disconnect",
       "summary": "Disconnect the device if connected via WIFI.",
+      "tags": [
+        {
+          "name": "capabilities",
+          "x-uses": [
+            "xrn:firebolt:capability:protocol:wifi"
+          ]
+        }
+      ],
       "params": [],
       "result": {
         "name": "result",
@@ -279,6 +303,14 @@
     {
       "name": "wps",
       "summary": "Connect to WPS",
+      "tags": [
+        {
+          "name": "capabilities",
+          "x-uses": [
+            "xrn:firebolt:capability:protocol:wifi"
+          ]
+        }
+      ],
       "params": [
         {
           "name": "security",

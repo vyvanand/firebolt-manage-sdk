@@ -3,7 +3,10 @@
     "info": {
         "title": "LifecycleManagement",
         "description": "A module for managing application lifecycle.",
-        "version": "0.0.0"
+        "version": "0.0.0",
+        "x-interface-names": {
+            "xrn:firebolt:capability:lifecycle:state": "StateProvider"
+        }
     },
     "methods": [
         {
@@ -28,7 +31,7 @@
             "tags": [
                 {
                     "name": "capabilities",
-                    "x-manages": ["xrn:firebolt:capability:app:lifecycle"]
+                    "x-manages": ["xrn:firebolt:capability:lifecycle:state"]
                 }
             ],
             "result": {
@@ -72,7 +75,7 @@
             "tags": [
                 {
                     "name": "capabilities",
-                    "x-manages": ["xrn:firebolt:capability:app:lifecycle"]
+                    "x-manages": ["xrn:firebolt:capability:lifecycle:state"]
                 }
             ],
             "result": {
@@ -127,15 +130,7 @@
         {
             "name": "onRequestLaunch",
             "summary": "Tells the provider that an app should be launched",
-            "params": [
-                {
-                    "name": "listen",
-                    "summary": "Whether or not to listen for requests to this interface method.",
-                    "schema": {
-                        "type": "boolean"
-                    }
-                }
-            ],
+            "params": [],
             "tags": [
                 {
                     "name": "event",
@@ -153,7 +148,7 @@
                 },
                 {
                     "name": "capabilities",
-                    "x-provides": "xrn:firebolt:capability:app:launch",
+                    "x-provides": "xrn:firebolt:capability:lifecycle:launch",
                     "x-allow-focus": false
                 }
             ],
@@ -161,25 +156,13 @@
                 "name": "launch",
                 "summary": "The app was requested to be launched",
                 "schema": {
-                    "oneOf": [
-                        {
-                            "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ListenResponse"
-                        },
-                        {
-                            "$ref": "#/components/schemas/LifecycleLaunchRequest"
-                        }
-                    ]
+                    "$ref": "#/components/schemas/LifecycleLaunchRequest"
                 }
             },
             "examples": [
                 {
                     "name": "Default Example",
-                    "params": [
-                        {
-                            "name": "listen",
-                            "value": true
-                        }
-                    ],
+                    "params": [],
                     "result": {
                         "name": "Default Result",
                         "value": {
@@ -201,15 +184,7 @@
         {
             "name": "onRequestReady",
             "summary": "Tells the provider that an app has said they are ready",
-            "params": [
-                {
-                    "name": "listen",
-                    "summary": "Whether or not to listen for requests to this interface method.",
-                    "schema": {
-                        "type": "boolean"
-                    }
-                }
-            ],
+            "params": [],
             "tags": [
                 {
                     "name": "event",
@@ -222,7 +197,7 @@
                 },
                 {
                     "name": "capabilities",
-                    "x-provides": "xrn:firebolt:capability:app:lifecycle",
+                    "x-provides": "xrn:firebolt:capability:lifecycle:state",
                     "x-allow-focus": false
                 }
             ],
@@ -230,25 +205,13 @@
                 "name": "ready",
                 "summary": "The app has said they are ready",
                 "schema": {
-                    "oneOf": [
-                        {
-                            "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ListenResponse"
-                        },
-                        {
-                            "$ref": "#/components/schemas/LifecycleReadyRequest"
-                        }
-                    ]
+                    "$ref": "#/components/schemas/LifecycleReadyRequest"
                 }
             },
             "examples": [
                 {
                     "name": "Default Example",
-                    "params": [
-                        {
-                            "name": "listen",
-                            "value": true
-                        }
-                    ],
+                    "params": [],
                     "result": {
                         "name": "Default Result",
                         "value": {
@@ -264,19 +227,11 @@
         {
             "name": "onRequestClose",
             "summary": "Tells the provider that an app has requested closing itself",
-            "params": [
-                {
-                    "name": "listen",
-                    "summary": "Whether or not to listen for requests to this interface method.",
-                    "schema": {
-                        "type": "boolean"
-                    }
-                }
-            ],
+            "params": [],
             "tags": [
                 {
                     "name": "capabilities",
-                    "x-provides": "xrn:firebolt:capability:app:lifecycle",
+                    "x-provides": "xrn:firebolt:capability:lifecycle:state",
                     "x-allow-focus": false
                 },
                 {
@@ -293,25 +248,13 @@
                 "name": "close",
                 "summary": "The app has requested to be closed",
                 "schema": {
-                    "oneOf": [
-                        {
-                            "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ListenResponse"
-                        },
-                        {
-                            "$ref": "#/components/schemas/LifecycleCloseRequest"
-                        }
-                    ]
+                    "$ref": "#/components/schemas/LifecycleCloseRequest"
                 }
             },
             "examples": [
                 {
                     "name": "Default Example",
-                    "params": [
-                        {
-                            "name": "listen",
-                            "value": true
-                        }
-                    ],
+                    "params": [],
                     "result": {
                         "name": "Default Result",
                         "value": {
@@ -328,19 +271,11 @@
         {
             "name": "onRequestFinished",
             "summary": "Tells the provider that an app has said they are finished cleaning up while unloading",
-            "params": [
-                {
-                    "name": "listen",
-                    "summary": "Whether or not to listen for requests to this interface method.",
-                    "schema": {
-                        "type": "boolean"
-                    }
-                }
-            ],
+            "params": [],
             "tags": [
                 {
                     "name": "capabilities",
-                    "x-provides": "xrn:firebolt:capability:app:lifecycle",
+                    "x-provides": "xrn:firebolt:capability:lifecycle:state",
                     "x-allow-focus": false
                 },
                 {
@@ -357,25 +292,13 @@
                 "name": "finished",
                 "summary": "The app has said they are finished",
                 "schema": {
-                    "oneOf": [
-                        {
-                            "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ListenResponse"
-                        },
-                        {
-                            "$ref": "#/components/schemas/LifecycleFinishedRequest"
-                        }
-                    ]
+                    "$ref": "#/components/schemas/LifecycleFinishedRequest"
                 }
             },
             "examples": [
                 {
                     "name": "Default Example",
-                    "params": [
-                        {
-                            "name": "listen",
-                            "value": true
-                        }
-                    ],
+                    "params": [],
                     "result": {
                         "name": "Default Result",
                         "value": {

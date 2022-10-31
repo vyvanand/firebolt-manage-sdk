@@ -65,7 +65,7 @@ beforeAll( () => {
         }
     })
 
-    ClosedCaptions.provide('xrn:firebolt:capability:settings:closedcaptions', new CCProvider())    
+    ClosedCaptions.provide('xrn:firebolt:capability:accessibility:closedcaptions', new CCProvider())    
 
     return new Promise( (resolve, reject) => {
         setTimeout(resolve, 1000)

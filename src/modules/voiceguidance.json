@@ -11,7 +11,7 @@
             "tags": [
                 {
                     "name": "capabilities",
-                    "x-provides": "xrn:firebolt:capability:settings:voiceguidance"
+                    "x-provides": "xrn:firebolt:capability:accessibility:voiceguidance"
                 },
                 {
                     "name": "event",
@@ -25,19 +25,13 @@
             "result": {
                 "name": "result",
                 "schema": {
-                    "oneOf": [
-                        {
-                            "$ref": "https://meta.comcast.com/firebolt/types#/definitions/ListenResponse"
-                        },
-                        {
-                            "type": "object",
+                                                "type": "object",
                             "properties": {
                                 "parameters": {
                                     "const": null
                                 }
                             }
-                        }
-                    ]
+                        
                 }
             },
             "examples": [
@@ -63,7 +57,7 @@
                 {
                     "name": "capabilities",
                     "x-manages": [
-                        "xrn:firebolt:capability:settings:voiceguidance"
+                        "xrn:firebolt:capability:accessibility:voiceguidance"
                     ]
                 }
             ],
@@ -97,7 +91,7 @@
                 {
                     "name": "capabilities",
                     "x-manages": [
-                        "xrn:firebolt:capability:settings:voiceguidance"
+                        "xrn:firebolt:capability:accessibility:voiceguidance"
                     ]
                 }
             ],
