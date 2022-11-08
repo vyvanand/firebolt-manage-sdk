@@ -14,7 +14,7 @@
                 },
                 {
                     "name": "capabilities",
-                    "x-manages": ["xrn:firebolt:capability:settings:device"]
+                    "x-uses": ["xrn:firebolt:capability:device:name"]
                 }
             ],
             "summary": "The user-assigned name of this device.",
@@ -130,7 +130,7 @@
                 },
                 {
                     "name": "capabilities",
-                    "x-manages": ["xrn:firebolt:capability:developer:tools"]
+                    "x-uses": ["xrn:firebolt:capability:developer:tools"]
                 }
             ],
             "summary": "Whether or not developer mode is enabled.",

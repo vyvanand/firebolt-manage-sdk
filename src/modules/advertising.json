@@ -45,7 +45,7 @@
                 },
                 {
                     "name": "capabilities",
-                    "x-manages": [
+                    "x-uses": [
                         "xrn:firebolt:capability:advertising:configuration"
                     ]
                 }

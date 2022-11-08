@@ -52,7 +52,7 @@
                 },
                 {
                     "name": "capabilities",
-                    "x-manages": [
+                    "x-uses": [
                         "xrn:firebolt:capability:accessibility:closedcaptions"
                     ]
                 }
@@ -84,7 +84,7 @@
                 },
                 {
                     "name": "capabilities",
-                    "x-manages": [
+                    "x-uses": [
                         "xrn:firebolt:capability:accessibility:closedcaptions"
                     ]
                 }
@@ -116,7 +116,7 @@
                 },
                 {
                     "name": "capabilities",
-                    "x-manages": [
+                    "x-uses": [
                         "xrn:firebolt:capability:accessibility:closedcaptions"
                     ]
                 }
@@ -148,7 +148,7 @@
                 },
                 {
                     "name": "capabilities",
-                    "x-manages": [
+                    "x-uses": [
                         "xrn:firebolt:capability:accessibility:closedcaptions"
                     ]
                 }
@@ -180,7 +180,7 @@
                 },
                 {
                     "name": "capabilities",
-                    "x-manages": [
+                    "x-uses": [
                         "xrn:firebolt:capability:accessibility:closedcaptions"
                     ]
                 }
@@ -212,7 +212,7 @@
                 },
                 {
                     "name": "capabilities",
-                    "x-manages": [
+                    "x-uses": [
                         "xrn:firebolt:capability:accessibility:closedcaptions"
                     ]
                 }
@@ -244,7 +244,7 @@
                 },
                 {
                     "name": "capabilities",
-                    "x-manages": [
+                    "x-uses": [
                         "xrn:firebolt:capability:accessibility:closedcaptions"
                     ]
                 }
@@ -276,7 +276,7 @@
                 },
                 {
                     "name": "capabilities",
-                    "x-manages": [
+                    "x-uses": [
                         "xrn:firebolt:capability:accessibility:closedcaptions"
                     ]
                 }
@@ -308,7 +308,7 @@
                 },
                 {
                     "name": "capabilities",
-                    "x-manages": [
+                    "x-uses": [
                         "xrn:firebolt:capability:accessibility:closedcaptions"
                     ]
                 }
@@ -340,7 +340,7 @@
                 },
                 {
                     "name": "capabilities",
-                    "x-manages": [
+                    "x-uses": [
                         "xrn:firebolt:capability:accessibility:closedcaptions"
                     ]
                 }
@@ -372,7 +372,7 @@
                 },
                 {
                     "name": "capabilities",
-                    "x-manages": [
+                    "x-uses": [
                         "xrn:firebolt:capability:accessibility:closedcaptions"
                     ]
                 }

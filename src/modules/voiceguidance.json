@@ -56,7 +56,7 @@
                 },
                 {
                     "name": "capabilities",
-                    "x-manages": [
+                    "x-uses": [
                         "xrn:firebolt:capability:accessibility:voiceguidance"
                     ]
                 }
@@ -90,7 +90,7 @@
                 },
                 {
                     "name": "capabilities",
-                    "x-manages": [
+                    "x-uses": [
                         "xrn:firebolt:capability:accessibility:voiceguidance"
                     ]
                 }
