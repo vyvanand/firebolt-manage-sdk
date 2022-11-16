@@ -7,7 +7,7 @@
   "type": "module",
   "scripts": {
     "prepare": "npm run prepare:setup && npm run build:openrpc && npm run dist:docs && npm run dist:d && npm run dist:sdk",
-    "prepare:setup": "npm run clean && npx mkdir ./dist/docs ./dist/lib ./build/docs/markdown ./build/sdk/javascript/src",
+    "prepare:setup": "npm run clean && npx mkdirp ./dist/docs ./dist/lib ./build/docs/markdown ./build/sdk/javascript/src",
     "validate": "firebolt-openrpc --task validate --source ./src --shared-schemas node_modules/@firebolt-js/schemas/src/schemas/ && npm run build:openrpc && firebolt-openrpc --task validate --source ./dist/firebolt-manage-open-rpc.json --shared-schemas node_modules/@firebolt-js/schemas/src/schemas/",
     "build:openrpc": "firebolt-openrpc --task openrpc --source ./src --template ./src/template/openrpc/template.json --output ./dist/firebolt-manage-open-rpc.json --shared-schemas node_modules/@firebolt-js/schemas/src/schemas/",
     "build:sdk": "firebolt-openrpc --task sdk --source ./src/ --template ./src/template/js --output ./build/sdk/javascript/src --shared-schemas node_modules/@firebolt-js/schemas/src/schemas/",
@@ -19,10 +19,10 @@
     "dist:wiki": "npm run validate && npm run build:wiki && rm -r ./dist/docs && cp -R ./build/docs/markdown ./dist/docs",
     "test:setup": "rimraf test/transpiled-suite && npx tsc --target es6 --moduleResolution node --outDir test/transpiled-suite/",
     "test": "npm run test:setup && node --experimental-vm-modules node_modules/jest/bin/jest.js --config=jest.config.json --detectOpenHandles",
-    "clean": "rimraf build && npx mkdir build && rimraf dist && npx mkdir dist",
+    "clean": "rimraf build && npx mkdirp build && rimraf dist && npx mkdirp dist",
     "build": "npm run validate && npm run build:docs && npm run build:sdk",
     "publish:docs": "npm run build:docs && sh ./push-docs.sh",
-    "publish:word": "npx mkdir ./dist/word/schemas && cd ./dist/docs && find . -iname \"*.md\" -type f -exec sh -c 'pandoc \"${0}\" -o \"../word/${0%.md}.docx\"' {} \\;",
+    "publish:word": "npx mkdirp ./dist/word/schemas && cd ./dist/docs && find . -iname \"*.md\" -type f -exec sh -c 'pandoc \"${0}\" -o \"../word/${0%.md}.docx\"' {} \\;",
     "postinstall": "npm update @firebolt-js/openrpc"
   },
   "repository": {
