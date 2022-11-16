@@ -19,7 +19,7 @@
     "dist:wiki": "npm run validate && npm run build:wiki && rm -r ./dist/docs && cp -R ./build/docs/markdown ./dist/docs",
     "test:setup": "rimraf test/transpiled-suite && npx tsc --target es6 --moduleResolution node --outDir test/transpiled-suite/",
     "test": "npm run test:setup && node --experimental-vm-modules node_modules/jest/bin/jest.js --config=jest.config.json --detectOpenHandles",
-    "clean": "npx rimraf build && npx mkdirp build && npx rimraf dist && npx mkdirp dist",
+    "clean": "npx rimraf ./build && npx mkdirp ./build && npx rimraf ./dist && npx mkdirp ./dist",
     "build": "npm run validate && npm run build:docs && npm run build:sdk",
     "publish:docs": "npm run build:docs && sh ./push-docs.sh",
     "publish:word": "npx mkdirp ./dist/word/schemas && cd ./dist/docs && find . -iname \"*.md\" -type f -exec sh -c 'pandoc \"${0}\" -o \"../word/${0%.md}.docx\"' {} \\;",
